@@ -1,0 +1,19 @@
+---
+import Section from "../../components/Section.astro";
+import Headings from "../../components/Headings.astro";
+import Title from "../../components/Title.astro";
+import Form from "./components/Form";
+import Menu from "../../components/Menu.astro";
+---
+
+<Section id="contact" className="bg-neutral-800">
+	<Headings heading="Contact" subheading="Feel free to contact me anytime" />
+	<div>
+		<Title title="Send me a message!" />
+		<Form client:load />
+	</div>
+	<div class="xl:hidden">
+		<Title title="Find me elsewhere!" />
+		<Menu className="bg-neutral-700 rounded-xl shadow-md py-2 px-3 flex flex-wrap sm:flex-nowrap mt-2.5 mb-3" />
+	</div>
+</Section>

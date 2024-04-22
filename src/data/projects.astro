@@ -1,0 +1,31 @@
+---
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { storyblokEditable } from "@storyblok/astro";
+import Title from "../components/Title.astro";
+
+const { blok } = Astro.props;
+
+let featuredBlok = blok.projects.find(blok => blok.component === 'featured');
+
+---
+
+<div {...storyblokEditable(blok)} class="grid gap-4 ">
+	<div class="grid gap-2">
+    <Title title="Featured Project" />
+		<StoryblokComponent blok={featuredBlok} />
+	</div>
+  <div class="grid gap-2">
+    <Title title="All Projects" />
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        blok.projects?.filter(blok => blok.component === 'project').map((blok) => {
+          return (
+            <div class="">
+              <StoryblokComponent blok={blok} />
+              </div>
+            );
+          })
+        }
+	</div>
+</div>
+</div>

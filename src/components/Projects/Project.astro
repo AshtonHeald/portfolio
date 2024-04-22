@@ -1,0 +1,71 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import { renderRichText } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+
+const content = renderRichText(blok.content);
+
+let uid = blok._uid.replace(/-/g, "");
+---
+
+<div {...storyblokEditable(blok)}>
+  <button class="border-4 border-base-300 group overflow-hidden relative " onclick={`_${uid}.showModal()`}>
+    <img
+			src={blok.image?.filename}
+			alt={blok.image?.alt}
+			class="w-full aspect-video"
+		/>
+    <div class="absolute flex flex-col justify-center items-center top-0 bottom-0 right-0 left-0 opacity-0 bg-neutral hover:opacity-95 transition-all">
+			<h4 class="text-2xl font-semibold text-pink-300 mb-1">{blok.title}</h4>
+			<span>View Details</span>
+		</div>
+  </button>
+</div>
+<dialog id={`_${uid}`} class="modal">
+	<div class="modal-box">
+		<form method="dialog">
+			<button
+				class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+				>✕</button
+			>
+		</form>
+		<img
+			src={blok.image?.filename}
+			alt={blok.image?.alt}
+			class="w-full aspect-video"
+		/>
+		<div class="" set:html={content} />
+		<div class="flex justify-center gap-2">
+			{
+				blok.tech?.map((blok) => {
+					return (
+						<img
+							src={blok.icon?.filename}
+							class="max-w-6 max-h-6"
+						/>
+					);
+				})
+			}
+		</div>
+		<div class="flex gap-3 mt-auto">
+			{
+				blok.buttons?.map((button, index) => {
+					const buttonClass =
+						index === 1
+							? "btn btn-primary"
+							: "btn btn-neutral";
+
+					return (
+						<a href={button.href} class={buttonClass}>
+							{button.text}
+						</a>
+					);
+				})
+			}
+		</div>
+	</div>
+	<form method="dialog" class="modal-backdrop">
+		<button>close</button>
+	</form>
+</dialog>

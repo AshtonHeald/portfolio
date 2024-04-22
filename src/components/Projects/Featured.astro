@@ -1,0 +1,52 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import { renderRichText } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+
+const content = renderRichText(blok.content);
+---
+
+<div {...storyblokEditable(blok)} class="md:grid grid-cols-2 gap-3">
+	<img
+		src={blok.image?.filename}
+		alt={blok.image?.alt}
+		class="w-full aspect-video"
+	/>
+	<div class="flex flex-col gap-2">
+		<h3 class="text-2xl font-semibold text-primary">{blok.title}</h3>
+		<div set:html={content} />
+		<div class="grid mt-auto gap-3">
+
+			<div class="flex gap-2">
+				{
+					blok.tech?.map((blok) => {
+						return (
+						<div class="w-6 tooltip" data-tip={blok.name}>
+							<img
+							src={blok.icon?.filename}
+							class="max-w-6 max-h-6"
+							/>
+						</div>
+					);
+				})
+			}
+		</div>
+		<div class="flex gap-3">
+			{
+				blok.buttons?.map((button, index) => {
+					const buttonClass =
+						index === 1
+						? "btn btn-primary"
+						: "btn btn-neutral";
+						return (
+							<a href={button.href} class={buttonClass}>
+								{button.text}
+								</a>
+							);
+						})
+					}
+		</div>
+	</div>
+	</div>
+</div>

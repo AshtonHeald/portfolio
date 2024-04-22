@@ -1,0 +1,53 @@
+---
+import IconBtn from "./IconBtn.astro";
+
+import linkedin from "../../assets/icons/social/linkedin.svg";
+import leetcode from "../../assets/icons/social/leetcode.svg";
+import codepen from "../../assets/icons/social/codepen.svg";
+import github from "../../assets/icons/social/github.svg";
+import x from "../../assets/icons/social/x.svg";
+import devto from "../../assets/icons/social/devto.svg";
+---
+
+<ul class="menu menu-horizontal text-base gap-1.5 bg-base-100 rounded-box p-0">
+	<li>
+		<IconBtn
+			href="https://www.linkedin.com/in/ashtonheald/"
+			src={linkedin.src}
+			alt="LinkedIn"
+		/>
+	</li>
+	<li>
+		<IconBtn
+			href="https://leetcode.com/AshTheDev/"
+			src={leetcode.src}
+			alt="Leetcode"
+		/>
+	</li>
+	<li>
+		<IconBtn
+			href="https://codepen.io/ashthedev"
+			src={codepen.src}
+			alt="Codepen"
+		/>
+	</li>
+	<li>
+		<IconBtn
+			href="https://github.com/AshtonHeald"
+			src={github.src}
+			alt="Github"
+		/>
+	</li>
+	<li>
+		<IconBtn 
+    href="https://dev.to/ashthedev"
+    src={devto.src} 
+    alt="Dev.to" />
+	</li>
+	<li>
+		<IconBtn 
+    href="https://twitter.com/AshtonHeald" 
+    src={x.src} 
+    alt="X" />
+	</li>
+</ul>

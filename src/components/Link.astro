@@ -1,0 +1,8 @@
+---
+const { href, text, className } = Astro.props;
+---
+
+<a class="link link-primary link-hover" href={href} target="_blank" rel="noopener noreferrer">
+	<slot />
+	<span>{text}</span>
+</a>

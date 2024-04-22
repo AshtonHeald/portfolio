@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Typewriter from "../components/Home/Typewriter";
+
+const textSequence = [
+	"Web Wizard",
+	1500,
+	"Code Craftsman",
+	2000,
+	"Javascript Jedi",
+	1500,
+];
+---
+
+<Layout title="Ashton Heald - Portfolio">
+	<article class="h-full grid place-items-center">
+		<div class="mb-28">
+			<h1
+			class="text-[2.5rem] mb-2 md:text-6xl md:mb-8 lg:text-7xl font-semibold text-center lg:mb-8"
+			>
+			Ashton G. Heald
+		</h1>
+		<h2 class="text-[1.5rem] md:text-3xl lg:text-4xl text-center">
+		<span> I'm a </span>
+		<Typewriter textSequence={textSequence} client:load />
+	</h2>
+</div>
+</article>
+</Layout>
+../components/Home/Typewriter

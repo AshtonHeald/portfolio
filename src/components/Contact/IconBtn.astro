@@ -1,0 +1,8 @@
+---
+const { href, src, alt } = Astro.props;
+
+---
+
+<a href={href} class="btn btn-ghost hover:bg-primary btn-circle hover:text-base-100 transition-none">
+  <img class="w-6 h-6" src={src} alt={alt}>
+</a>
