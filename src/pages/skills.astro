@@ -3,40 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Heading from "../components/Heading.astro";
 import Title from "../components/Title.astro";
 
-import info from "../assets/icons/ui/info.svg"
+import info from "../assets/icons/ui/info.svg";
 
-import html from "../assets/icons/tech/html.svg"
-import css from "../assets/icons/tech/css.svg"
-import js from "../assets/icons/tech/js.svg"
-import ts from "../assets/icons/tech/ts.svg"
-
-import php from "../assets/icons/tech/php.svg"
-import node from "../assets/icons/tech/node.svg"
-
-import npm from "../assets/icons/tech/npm.svg"
-import vite from "../assets/icons/tech/vite.svg"
-
-import sass from "../assets/icons/tech/sass.svg"
-import bootstrap from "../assets/icons/tech/bootstrap.svg"
-import tailwind from "../assets/icons/tech/tailwind.svg"
-import mui from "../assets/icons/tech/mui.svg"
-
-import react from "../assets/icons/tech/react.svg"
-import next from "../assets/icons/tech/next.svg"
-import astro from "../assets/icons/tech/astro.svg"
-
-import wordpress from "../assets/icons/tech/wordpress.svg"
-import storyblok from "../assets/icons/tech/storyblok.svg"
-import sanity from "../assets/icons/tech/sanity.svg"
-import supabase from "../assets/icons/tech/supabase.svg"
-
-import postgres from "../assets/icons/tech/postgres.svg"
-import mysql from "../assets/icons/tech/mysql.svg"
-
-import git from "../assets/icons/tech/git.svg"
-import vscode from "../assets/icons/tech/vscode.svg"
-import figma from "../assets/icons/tech/figma.svg"
-
+import skillsData from "../data/skills.json";
 ---
 
 <Layout title="Ashton Heald - Portfolio">
@@ -47,97 +16,28 @@ import figma from "../assets/icons/tech/figma.svg"
 				<div class="card-body">
 					<span class="flex gap-1 items-center">
 						<Title title="Technologies" />
-						<div class="tooltip" data-tip="Highlighted Technologies: Only includes technologies I've extensively worked with.">
-							<img class="w-5 h-5" src={info.src} alt="Info">
+						<div
+							class="tooltip"
+							data-tip="Highlighted Technologies: Only includes technologies I've extensively worked with."
+						>
+							<img class="w-5 h-5" src={info.src} alt="Info" />
 						</div>
-						
 					</span>
 					<ul class="flex flex-wrap gap-1">
-						<!-- Frontend Languages -->
-						<li>
-								<img class="w-6 h-6" src={html.src} alt="HTML">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={css.src} alt="CSS">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={js.src} alt="JS">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={ts.src} alt="TS">
-						</li>
-				
-						<!-- Backend Languages -->
-						<li>
-								<img class="w-6 h-6" src={php.src} alt="PHP">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={node.src} alt="Node">
-						</li>
-						<!-- Build Tools -->
-						<li>
-							<img class="w-6 h-6" src={npm.src} alt="NPM">
-						</li>
-						<li>
-							<img class="w-6 h-6" src={vite.src} alt="Vite">
-						</li>
-						<!-- JavaScript Frameworks & Libraries -->
-						<li>
-								<img class="w-6 h-6" src={react.src} alt="React">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={next.src} alt="Next">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={astro.src} alt="Astro">
-						</li>
-						<!-- CSS Frameworks & Libraries -->
-						<li>
-								<img class="w-6 h-6" src={sass.src} alt="Sass">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={bootstrap.src} alt="Bootstrap">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={tailwind.src} alt="Tailwind">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={mui.src} alt="MUI">
-						</li>
-				
-						<!-- CMS & BaaS -->
-						<li>
-								<img class="w-6 h-6" src={wordpress.src} alt="Wordpress">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={storyblok.src} alt="Storyblok">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={sanity.src} alt="Sanity">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={supabase.src} alt="Supabase">
-						</li>
-				
-						<!-- Database Technologies -->
-						<li>
-								<img class="w-6 h-6" src={mysql.src} alt="MySQL">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={postgres.src} alt="PostgreSQL">
-						</li>
-				
-						<!-- Tools -->
-						<li>
-								<img class="w-6 h-6" src={git.src} alt="Git">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={vscode.src} alt="VSCode">
-						</li>
-						<li>
-								<img class="w-6 h-6" src={figma.src} alt="Figma">
-						</li>
-				</ul>
+						{
+							skillsData.tech.map((skill) => (
+								<li>
+									<div class="tooltip" data-tip={skill.alt}>
+										<img
+											class="w-6 h-6"
+											src={skill.src}
+											alt={skill.alt}
+										/>
+									</div>
+								</li>
+							))
+						}
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -146,26 +46,25 @@ import figma from "../assets/icons/tech/figma.svg"
 				<div class="card-body">
 					<Title title="Key Concepts" />
 					<ul class="list-disc pl-5">
-						<li>Accessibility</li>
-						<li>Version Control</li>
-						<li>Optimization</li>
-						<li>Repsponsive-Design</li>
-						<li>Compatibility</li>
-					</ul>
+							{
+								skillsData.concepts.map((concept) => (
+									<li>{concept}</li>
+								))
+							}
+						</ul>
 				</div>
 			</div>
-	
 		</div>
 		<div class="gap-4">
 			<div class="card bg-base-100 border border-base-300 w-full">
 				<div class="card-body">
 					<Title title="Top Soft Skills" />
 					<ol class="list-decimal pl-5">
-						<li>Active Listening</li>
-						<li>Attention to Detail</li>
-						<li>Communication</li>
-						<li>Critical Thinking</li>
-						<li>Problem Solving</li>
+						{
+							skillsData.softskills.map((skill) => (
+								<li>{skill}</li>
+							))
+						}
 					</ol>
 				</div>
 			</div>

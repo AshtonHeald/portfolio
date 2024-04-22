@@ -1,0 +1,43 @@
+{
+  "tech": [
+    {"id": "html", "src": "/icons/tech/html.svg", "alt": "HTML"},
+    {"id": "css", "src": "/icons/tech/css.svg", "alt": "CSS"},
+    {"id": "js", "src": "/icons/tech/js.svg", "alt": "JS"},
+    {"id": "ts", "src": "/icons/tech/ts.svg", "alt": "TS"},
+    {"id": "php", "src": "/icons/tech/php.svg", "alt": "PHP"},
+    {"id": "node", "src": "/icons/tech/node.svg", "alt": "Node"},
+    {"id": "npm", "src": "/icons/tech/npm.svg", "alt": "NPM"},
+    {"id": "vite", "src": "/icons/tech/vite.svg", "alt": "Vite"},
+    {"id": "react", "src": "/icons/tech/react.svg", "alt": "React"},
+    {"id": "next", "src": "/icons/tech/next.svg", "alt": "Next"},
+    {"id": "astro", "src": "/icons/tech/astro.svg", "alt": "Astro"},
+    {"id": "sass", "src": "/icons/tech/sass.svg", "alt": "Sass"},
+    {"id": "bootstrap", "src": "/icons/tech/bootstrap.svg", "alt": "Bootstrap"},
+    {"id": "tailwind", "src": "/icons/tech/tailwind.svg", "alt": "Tailwind"},
+    {"id": "shadcnui", "src": "/icons/tech/shadcnui.svg", "alt": "Shadcn/ui"},
+    {"id": "mui", "src": "/icons/tech/mui.svg", "alt": "MUI"},
+    {"id": "wordpress", "src": "/icons/tech/wordpress.svg", "alt": "Wordpress"},
+    {"id": "storyblok", "src": "/icons/tech/storyblok.svg", "alt": "Storyblok"},
+    {"id": "sanity", "src": "/icons/tech/sanity.svg", "alt": "Sanity"},
+    {"id": "supabase", "src": "/icons/tech/supabase.svg", "alt": "Supabase"},
+    {"id": "mysql", "src": "/icons/tech/mysql.svg", "alt": "MySQL"},
+    {"id": "postgres", "src": "/icons/tech/postgres.svg", "alt": "PostgreSQL"},
+    {"id": "git", "src": "/icons/tech/git.svg", "alt": "Git"},
+    {"id": "vscode", "src": "/icons/tech/vscode.svg", "alt": "VSCode"},
+    {"id": "figma", "src": "/icons/tech/figma.svg", "alt": "Figma"}
+  ],
+  "concepts": [
+    "Accessibility",
+    "Version Control",
+    "Optimization",
+    "Responsive Design",
+    "Compatibility"
+  ],
+  "softskills": [
+    "Active Listening",
+    "Attention to Detail",
+    "Communication",
+    "Critical Thinking",
+    "Problem Solving"
+  ]
+}

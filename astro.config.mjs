@@ -12,7 +12,7 @@ export default defineConfig({
 		storyblok({
 			accessToken: env.STORYBLOK_TOKEN,
 			components: {
-				projects: "data/projects",
+				projects: "layouts/Projects",
 				featured: "components/Projects/Featured",
 				project: "components/Projects/Project",
 			},
