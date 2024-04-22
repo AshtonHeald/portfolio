@@ -35,15 +35,21 @@ let uid = blok._uid.replace(/-/g, "");
 			alt={blok.image?.alt}
 			class="w-full aspect-video"
 		/>
-		<div class="" set:html={content} />
-		<div class="flex justify-center gap-2">
+		<div set:html={content} />
+		<div class="flex gap-2">
 			{
 				blok.tech?.map((blok) => {
 					return (
-						<img
-							src={blok.icon?.filename}
-							class="max-w-6 max-h-6"
-						/>
+						<div
+							class="w-6 tooltip grid place-items-center"
+							data-tip={blok.icon?.title}
+						>
+							<img
+								src={blok.icon?.filename}
+								alt={blok.icon?.alt}
+								class="max-w-6 max-h-6"
+							/>
+						</div>
 					);
 				})
 			}
