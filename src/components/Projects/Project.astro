@@ -18,7 +18,7 @@ let uid = blok._uid.replace(/-/g, "");
 		/>
     <div class="absolute flex flex-col justify-center items-center top-0 bottom-0 right-0 left-0 opacity-0 bg-neutral hover:opacity-95 transition-all">
 			<h4 class="text-2xl font-semibold text-pink-300 mb-1">{blok.title}</h4>
-			<span>View Details</span>
+			<span class="text-neutral-content">View Details</span>
 		</div>
   </button>
 </div>
@@ -26,14 +26,18 @@ let uid = blok._uid.replace(/-/g, "");
 	<div class="modal-box">
 		<form method="dialog">
 			<button
-				class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+				class="btn btn-sm btn-circle btn-ghost absolute right-5 top-5"
 				>✕</button
 			>
 		</form>
+		<div class="space-y-4">
+
+		
+		<h3 class="text-xl font-semibold">{blok.title}</h3>
 		<img
 			src={blok.image?.filename}
 			alt={blok.image?.alt}
-			class="w-full aspect-video"
+			class="w-full aspect-video border-4 border-base-300"
 		/>
 		<div set:html={content} />
 		<div class="flex gap-2">
@@ -70,6 +74,7 @@ let uid = blok._uid.replace(/-/g, "");
 				})
 			}
 		</div>
+	</div>
 	</div>
 	<form method="dialog" class="modal-backdrop">
 		<button>close</button>

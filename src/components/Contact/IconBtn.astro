@@ -1,8 +1,10 @@
 ---
-const { href, src, alt } = Astro.props;
+const { href, title, d } = Astro.props;
 
 ---
 
-<a href={href} class="btn btn-ghost hover:bg-primary btn-circle hover:text-base-100 transition-none">
-  <img class="w-6 h-6" src={src} alt={alt}>
+<a href={href} class="btn btn-circle btn-ghost hover:bg-primary hover:text-base-100 transition-none">
+  <svg role="img" class="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>{title}</title>
+    <path d={d} fill="currentColor" />
+  </svg>
 </a>

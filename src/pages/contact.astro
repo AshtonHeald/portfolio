@@ -19,18 +19,30 @@ import SocialMenu from "../components/Contact/SocialMenu.astro";
 					<Form client:load />
 				</div>
 			</div>
-			<div>
-				<div>
-					<Title title="Find me elsewhere!" />
-					<SocialMenu />
-				</div>
-			</div>
+			
 		</div>
-		<div class="w-full h-full lg:w-[292px] lg:h-[292px]">
-			<iframe
+		<div class="space-y-2">
+
+			<div class="w-full h-full lg:w-[350px] lg:h-[350px]">
+				<iframe
 			class="w-full h-full rounded-xl border border-base-300"
-			src="https://www.openstreetmap.org/export/embed.html?bbox=-97.63669967651369%2C35.412417389224046%2C-97.41010665893556%2C35.53320409445092&amp;layer=mapnik"
+			src="https://www.openstreetmap.org/export/embed.html?bbox=-97.66347885131837%2C35.42025165506909%2C-97.37680435180665%2C35.54773099635523&amp;layer=mapnik"
 			></iframe>
 		</div>
+			<div>
+				<Title title="Find me elsewhere!" />
+				<SocialMenu />
+			</div>
+	</div>
 	</div>
 </Layout>
+
+<style is:global>
+	.input {
+		height: auto;
+	}
+	.input, .textarea {
+		padding: .5rem;
+	}
+
+</style>

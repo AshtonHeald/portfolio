@@ -34,8 +34,8 @@ const Form = () => {
     <>
     
 		<form action="">
-			<div className="flex flex-col md:flex-row gap-3">
-				<div className="grid md:w-6/12 gap-3">
+			<div className="flex flex-col gap-3">
+				<div className="grid gap-3">
 					<input
 						type="text"
 						placeholder="Name"
@@ -52,10 +52,11 @@ const Form = () => {
 						className="input input-bordered w-full"
 					/>
 				</div>
-				<div className="md:w-6/12">
+				<div className="">
 					<textarea
 						className="textarea h-full textarea-bordered textarea-md text-base w-full"
 						placeholder="Message"
+						rows={5}
 					></textarea>
 				</div>
 			</div>

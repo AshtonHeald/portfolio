@@ -11,10 +11,10 @@ const content = renderRichText(blok.content);
 	<img
 		src={blok.image?.filename}
 		alt={blok.image?.alt}
-		class="w-full aspect-video"
+		class="w-full aspect-video border-4 border-base-300"
 	/>
 	<div class="flex flex-col">
-		<h3 class="text-2xl font-semibold text-primary">{blok.title}</h3>
+		<h3 class="text-2xl font-semibold">{blok.title}</h3>
 		<div set:html={content} />
 		<div class="grid mt-auto gap-2">
 			<div class="flex gap-2">

@@ -14,6 +14,7 @@
     {"id": "sass", "src": "/icons/tech/sass.svg", "alt": "Sass"},
     {"id": "bootstrap", "src": "/icons/tech/bootstrap.svg", "alt": "Bootstrap"},
     {"id": "tailwind", "src": "/icons/tech/tailwind.svg", "alt": "Tailwind"},
+    {"id": "daisyui", "src": "/icons/tech/daisyui.svg", "alt": "DaisyUI"},
     {"id": "shadcnui", "src": "/icons/tech/shadcnui.svg", "alt": "Shadcn/ui"},
     {"id": "mui", "src": "/icons/tech/mui.svg", "alt": "MUI"},
     {"id": "wordpress", "src": "/icons/tech/wordpress.svg", "alt": "Wordpress"},
