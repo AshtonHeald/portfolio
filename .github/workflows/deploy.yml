@@ -1,8 +1,8 @@
 name: Deploy static content to Pages
 
 on:
-  repository_dispatch:
-    types: [storyblok_update]
+  push:
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
