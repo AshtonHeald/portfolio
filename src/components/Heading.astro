@@ -3,11 +3,10 @@ const { heading, subheading } = Astro.props;
 ---
 
 <div class="mb-2.5">
-    
-  <h2 class='text-3xl lg:text-4xl font-semibold'>
-      {heading}
+  <h1 class="text-3xl font-semibold lg:text-4xl">
+    {heading}
+  </h1>
+  <h2 class="text-lg lg:text-xl">
+    {subheading}
   </h2>
-  <h3 class="text-lg lg:text-xl">
-      {subheading}
-  </h3>
 </div>

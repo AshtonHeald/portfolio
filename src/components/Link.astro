@@ -1,8 +1,14 @@
 ---
-const { href, text, className } = Astro.props;
+const { href, text, ariaLabel } = Astro.props;
 ---
 
-<a class="link link-primary link-hover" href={href} target="_blank" rel="noopener noreferrer">
-	<slot />
-	<span>{text}</span>
+<a
+  href={href}
+  aria-label={ariaLabel}
+  class="link-hover link link-primary"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <slot />
+  <span>{text}</span>
 </a>

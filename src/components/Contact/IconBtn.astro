@@ -1,10 +1,18 @@
 ---
 const { href, title, d } = Astro.props;
-
 ---
 
-<a href={href} class="btn btn-circle btn-ghost hover:bg-primary hover:text-base-100 transition-none">
-  <svg role="img" class="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>{title}</title>
-    <path d={d} fill="currentColor" />
+<a
+  href={href}
+  aria-label=`Link to ${title} profile`
+  class="btn btn-square h-10 min-h-10 w-10 border-none bg-inherit shadow-none"
+>
+  <svg
+    role="img"
+    class="h-6 w-6"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    ><title>{title}</title>
+    <path d={d} fill="currentColor"></path>
   </svg>
 </a>

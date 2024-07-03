@@ -1,173 +1,130 @@
 ---
-// Supports weights 200-700
 import "@fontsource-variable/readex-pro";
-import "@fontsource/roboto/400.css";
-import Navigation from "../components/Nav";
+import Sidebar from "../components/Nav/Sidebar.astro";
+import Navbar from "../components/Nav/Navbar.astro";
 import Theme from "../components/Theme.astro";
 const { title } = Astro.props;
 ---
 
-
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<link rel="preload" as="image" href="/ash-smile.png" />
-		<script is:inline>
-			if (localStorage.getItem("theme") === null) {
-				document.documentElement.setAttribute("data-theme", "light");
-			} else
-				document.documentElement.setAttribute(
-					"data-theme",
-					localStorage.getItem("theme")
-				);
-		</script>
-		<script>
-			import { themeChange } from "theme-change";
-			themeChange();
-		</script>
-	</head>
-	<body
-		class="max-auto xl:grid
-  xl:h-screen
-  xl:overflow-hidden
-  xl:place-items-center
-  max-w-full
-	font-readex"
-	>
-		<div
-			class="mockup-browser
-		xl:border
-		border-base-300
-		h-screen
-		xl:h-[675px]
-    xl:max-w-[1200px]
-    xl:w-full
-		xl:relative"
-		>
-			<div class="hidden xl:block xl:mockup-browser-toolbar pr-0">
-				<a
-					href="/"
-					class="opacity-60 ml-auto mr-2 btn btn-square w-7 h-7 min-h-7 bg-inherit shadow-none border-none"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="w-5 h-5"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-						></path>
-					</svg>
-				</a>
-				<div 
-					class="input border border-base-300 font-roboto text-sm text-opacity-60 text-base-content"
-				>
-				<span class="leading-none">
-					{Astro.url}
-				</span>
-					<!--
-
-						<button 
-						class="btn btn-square w-7 h-7 min-h-7 bg-inherit shadow-none border-none"
-						>
-						<svg
-						xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-5 h-5 opacity-60"
-							>
-							<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"
-							></path>
-						</svg>
-					</button>
-					-->
-				</div>
-				<div class="flex items-center gap-3">
-					<Theme />
-				</div>
-			</div>
-			<div class="border-t border-base-300 xl:h-auto h-full">
-				<Navigation client:load />
-				<main class="xl:ml-64 xl:h-[620px] h-full">
-					<section
-						class="overflow-y-auto p-4 md:p-8 h-[calc(100%-48px)] xl:h-full mt-12 xl:mt-0 relative"
-					>
-						<slot />
-					</section>
-				</main>
-			</div>
-		</div>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="preload" as="image" href="/ash-smile.webp" />
+    <script is:inline>
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.setAttribute("data-theme", "garden");
+      } else
+        document.documentElement.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme"),
+        );
+    </script>
+    <script>
+      import { themeChange } from "theme-change";
+      themeChange();
+    </script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+  </head>
+  <body
+    class="max-auto max-w-full xl:grid xl:h-screen xl:place-items-center xl:overflow-hidden"
+  >
+    <div
+      class="mockup-browser h-[100dvh] xl:relative xl:h-[675px] xl:w-full xl:max-w-[1200px] xl:border xl:border-base-300"
+    >
+      <div class="hidden pr-0 xl:mockup-browser-toolbar xl:block">
+        <a
+          href="/"
+          aria-label="Navigate to Home page"
+          class="btn btn-square ml-auto mr-2 h-7 min-h-7 w-7 border-none bg-inherit shadow-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="h-5 w-5 opacity-60"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+            ></path>
+          </svg>
+        </a>
+        <div
+          id="urlContainer"
+          class="input border border-base-300 text-sm text-base-content text-opacity-60"
+        >
+          <span class="font-medium leading-none">
+            {Astro.url}
+          </span>
+        </div>
+        <div class="flex items-center gap-3">
+          <Theme />
+        </div>
+      </div>
+      <Sidebar />
+      <div class="h-full border-base-300 xl:h-auto xl:border-t">
+        <Navbar />
+        <main
+          class="h-full w-full pt-[60px] xl:ml-64 xl:h-[620px] xl:w-[calc(100%-256px)] xl:pt-0"
+        >
+          <section
+            class="relative flex h-full flex-col overflow-y-auto px-4 pb-6 pt-4 md:p-8 xl:mt-0"
+          >
+            <slot />
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
 </html>
-<style is:global>
-	#menu-toggle {
-		display: none;
-	}
-	#menu-toggle:checked ~ #toggle {
-		display: flex;
-		flex-direction: column;
-		overflow-y: scroll;
-	}
-	body#menu-toggle:checked {
-		overflow: hidden;
-	}
-	.disable-scroll {
-		overflow: hidden;
-	}
-	@media (min-width: 1024px) {
-		#menu-toggle:checked ~ #toggle {
-			overflow: unset;
-		}
-		body#menu-toggle:checked {
-			overflow: unset;
-		}
-		.disable-scroll {
-			overflow: unset;
-		}
-	}
-	.mockup-browser .xl\:mockup-browser-toolbar .input {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		font-weight: 300;
-		margin-left: 0px;
-		padding-left: 8px;
-		padding-right: 0px;
-	}
-	.mockup-browser .xl\:mockup-browser-toolbar .input::before,
-	.mockup-browser .xl\:mockup-browser-toolbar .input::after {
-		all: unset;
-	}
 
-	:root:has(
-			:is(
-					.modal-open,
-					.modal:target,
-					.modal-toggle:checked + .modal,
-					.modal[open]
-				)
-		) {
-		scrollbar-gutter: unset;
-	}
-	.modal:not(dialog:not(.modal-open)),
-	.modal::backdrop {
-		background-color: oklch(0.321785 0.02476 255.702);
-		opacity: 0.75;
-	}
+<style is:global>
+  @font-face {
+    font-family: "Readex Pro Variable";
+    font-style: normal;
+    font-display: block;
+    font-weight: 160 700;
+    src: url(@fontsource-variable/readex-pro/files/readex-pro-latin-wght-normal.woff2)
+      format("woff2-variations");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+      U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122,
+      U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  body {
+    font-family: "Readex Pro Variable", sans-serif;
+  }
+  .mockup-browser .xl\:mockup-browser-toolbar .input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-left: 0px;
+    padding-left: 8px;
+    padding-right: 0px;
+  }
+  .mockup-browser .xl\:mockup-browser-toolbar .input::before,
+  .mockup-browser .xl\:mockup-browser-toolbar .input::after {
+    all: unset;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: oklch(var(--bc)) solid 2px !important;
+  }
+  .btn {
+    animation: none !important;
+    //transition: none !important;
+  }
 </style>

@@ -2,72 +2,102 @@
 import Layout from "../layouts/Layout.astro";
 import Heading from "../components/Heading.astro";
 import Title from "../components/Title.astro";
-
 import skillsData from "../data/skills.json";
 ---
 
 <Layout title="Ashton Heald - Portfolio">
-	<Heading heading="Skills" subheading="Check out some of my expertise" />
-	<article class="flex flex-col sm:grid sm:grid-cols-2 gap-4">
-		<div class="col-span-2">
-			<div class="card bg-base-100 border border-base-300 w-full h-full">
-				<div class="card-body">
-					<span class="flex gap-1 items-center">
-						<Title title="Technologies" />
-						<div
-							class="tooltip"
-							data-tip="Highlighted Technologies: Only includes technologies I've extensively worked with."
-						>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-							<path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-						</svg>
-						</div>
-					</span>
-					<ul class="flex flex-wrap gap-1">
-						{
-							skillsData.tech.map((skill) => (
-								<li>
-									<div class="tooltip" data-tip={skill.alt}>
-										<img
-											class="w-6 h-6"
-											src={skill.src}
-											alt={skill.alt}
-										/>
-									</div>
-								</li>
-							))
-						}
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="gap-4">
-			<div class="card bg-base-100 border border-base-300 w-full">
-				<div class="card-body">
-					<Title title="Key Concepts" />
-					<ul class="list-disc pl-5">
-							{
-								skillsData.concepts.map((concept) => (
-									<li>{concept}</li>
-								))
-							}
-						</ul>
-				</div>
-			</div>
-		</div>
-		<div class="gap-4">
-			<div class="card bg-base-100 border border-base-300 w-full">
-				<div class="card-body">
-					<Title title="Top Soft Skills" />
-					<ol class="list-decimal pl-5">
-						{
-							skillsData.softskills.map((skill) => (
-								<li>{skill}</li>
-							))
-						}
-					</ol>
-				</div>
-			</div>
-		</div>
-	</article>
+  <Heading heading="Skills" subheading="Check out some of my expertise" />
+  <article class="flex flex-col gap-6 md:grid md:grid-cols-2">
+    <div class="col-span-2">
+      <div
+        class="card mt-1 h-full w-full rounded-lg border border-base-300 bg-base-100"
+      >
+        <div class="card-body p-4">
+          <Title title="Technologies" />
+          <ul class="flex flex-wrap gap-2">
+            {
+              skillsData.tech.map((skill) => (
+                <li>
+                  <div class="tooltip" data-tip={skill.alt}>
+                    <img class="h-6 w-6" src={skill.src} alt={skill.alt} />
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="gap-4">
+      <div class="join join-vertical w-full">
+        <div class="join-item border border-base-300">
+          <Title className="p-4" title="Key Concepts" />
+        </div>
+        {
+          skillsData.concepts.map((concept, index) => (
+            <div class="collapse join-item collapse-arrow border border-base-300 transition-none">
+              <input
+                type="radio"
+                id={`concept-${index}`}
+                aria-labelledby={`label-${index}`}
+                name="key-concepts"
+                checked={index === 0}
+              />
+              <div id={`label-${index}`} class="collapse-title font-medium">
+                {concept.name}
+              </div>
+              <div class="collapse-content transition-none">
+                {concept.subconcepts.map((subconcept) => (
+                  <p>{subconcept}</p>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="gap-4">
+      <div class="join join-vertical w-full">
+        <div class="join-item flex border border-base-300 p-4">
+          <span class="flex items-center gap-1">
+            <Title title="Top Soft Skills" />
+            <div class="tooltip" data-tip="Listed in alphabetical order">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="h-5 w-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+                ></path>
+              </svg>
+            </div>
+          </span>
+        </div>
+        <div class="join-item border border-base-300 px-4 pb-[1px]">
+          <ul class="table text-base">
+            {
+              skillsData.softskills.map((skill) => (
+                <li class="border-b border-base-200 py-3 pr-4 last-of-type:border-b-0">
+                  {skill}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
 </Layout>
+
+<style>
+  .collapse:not(.collapse-close)
+    > :where(input[type="radio"]:checked ~ .collapse-content) {
+    height: 88px;
+  }
+</style>

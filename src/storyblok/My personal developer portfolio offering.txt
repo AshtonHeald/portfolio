@@ -1,0 +1,1 @@
+My personal developer portfolio offering a curated showcase of my skills and projects. Utilizing a CMS for project showcase management. Features a unique layout, modals, 3d model rendering, typewriter effect, form functionality, and map integration.

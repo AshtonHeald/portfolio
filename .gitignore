@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# optional
+.prettierrc
+
 # generated types
 .astro/
 

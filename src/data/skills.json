@@ -1,44 +1,83 @@
 {
   "tech": [
-    {"id": "html", "src": "/icons/tech/html.svg", "alt": "HTML"},
-    {"id": "css", "src": "/icons/tech/css.svg", "alt": "CSS"},
-    {"id": "js", "src": "/icons/tech/js.svg", "alt": "JS"},
-    {"id": "ts", "src": "/icons/tech/ts.svg", "alt": "TS"},
-    {"id": "php", "src": "/icons/tech/php.svg", "alt": "PHP"},
-    {"id": "node", "src": "/icons/tech/node.svg", "alt": "Node"},
-    {"id": "npm", "src": "/icons/tech/npm.svg", "alt": "NPM"},
-    {"id": "vite", "src": "/icons/tech/vite.svg", "alt": "Vite"},
-    {"id": "react", "src": "/icons/tech/react.svg", "alt": "React"},
-    {"id": "next", "src": "/icons/tech/next.svg", "alt": "Next"},
-    {"id": "astro", "src": "/icons/tech/astro.svg", "alt": "Astro"},
-    {"id": "sass", "src": "/icons/tech/sass.svg", "alt": "Sass"},
-    {"id": "bootstrap", "src": "/icons/tech/bootstrap.svg", "alt": "Bootstrap"},
-    {"id": "tailwind", "src": "/icons/tech/tailwind.svg", "alt": "Tailwind"},
-    {"id": "daisyui", "src": "/icons/tech/daisyui.svg", "alt": "DaisyUI"},
-    {"id": "shadcnui", "src": "/icons/tech/shadcnui.svg", "alt": "Shadcn/ui"},
-    {"id": "mui", "src": "/icons/tech/mui.svg", "alt": "MUI"},
-    {"id": "wordpress", "src": "/icons/tech/wordpress.svg", "alt": "Wordpress"},
-    {"id": "storyblok", "src": "/icons/tech/storyblok.svg", "alt": "Storyblok"},
-    {"id": "sanity", "src": "/icons/tech/sanity.svg", "alt": "Sanity"},
-    {"id": "supabase", "src": "/icons/tech/supabase.svg", "alt": "Supabase"},
-    {"id": "mysql", "src": "/icons/tech/mysql.svg", "alt": "MySQL"},
-    {"id": "postgres", "src": "/icons/tech/postgres.svg", "alt": "PostgreSQL"},
-    {"id": "git", "src": "/icons/tech/git.svg", "alt": "Git"},
-    {"id": "vscode", "src": "/icons/tech/vscode.svg", "alt": "VSCode"},
-    {"id": "figma", "src": "/icons/tech/figma.svg", "alt": "Figma"}
+    { "id": "html", "src": "/tech-icons/html.svg", "alt": "HTML" },
+    { "id": "css", "src": "/tech-icons/css.svg", "alt": "CSS" },
+    { "id": "js", "src": "/tech-icons/js.svg", "alt": "JS" },
+    { "id": "ts", "src": "/tech-icons/ts.svg", "alt": "TS" },
+    { "id": "vite", "src": "/tech-icons/vite.svg", "alt": "Vite" },
+    { "id": "react", "src": "/tech-icons/react.svg", "alt": "React" },
+    { "id": "next", "src": "/tech-icons/next.svg", "alt": "Next" },
+    { "id": "astro", "src": "/tech-icons/astro.svg", "alt": "Astro" },
+    { "id": "php", "src": "/tech-icons/php.svg", "alt": "PHP" },
+    { "id": "mysql", "src": "/tech-icons/mysql.svg", "alt": "MySQL" },
+    {
+      "id": "postgres",
+      "src": "/tech-icons/postgres.svg",
+      "alt": "PostgreSQL"
+    },
+    { "id": "sass", "src": "/tech-icons/sass.svg", "alt": "Sass" },
+    {
+      "id": "bootstrap",
+      "src": "/tech-icons/bootstrap.svg",
+      "alt": "Bootstrap"
+    },
+    { "id": "tailwind", "src": "/tech-icons/tailwind.svg", "alt": "Tailwind" },
+    { "id": "mui", "src": "/tech-icons/mui.svg", "alt": "MUI" },
+    {
+      "id": "wordpress",
+      "src": "/tech-icons/wordpress.svg",
+      "alt": "Wordpress"
+    },
+    {
+      "id": "storyblok",
+      "src": "/tech-icons/storyblok.svg",
+      "alt": "Storyblok"
+    },
+    { "id": "sanity", "src": "/tech-icons/sanity.svg", "alt": "Sanity" },
+    { "id": "supabase", "src": "/tech-icons/supabase.svg", "alt": "Supabase" },
+    { "id": "git", "src": "/tech-icons/git.svg", "alt": "Git" },
+    { "id": "vscode", "src": "/tech-icons/vscode.svg", "alt": "VSCode" },
+    { "id": "figma", "src": "/tech-icons/figma.svg", "alt": "Figma" }
   ],
   "concepts": [
-    "Accessibility",
-    "Version Control",
-    "Optimization",
-    "Responsive Design",
-    "Compatibility"
+    {
+      "name": "Accessibility",
+      "subconcepts": ["• WCAG Standards & Principles", "• Semantic HTML"]
+    },
+    {
+      "name": "Compatibility",
+      "subconcepts": ["• Cross-Browser Compatibility", "• Responsive Design"]
+    },
+    {
+      "name": "Optimization",
+      "subconcepts": [
+        "• Code & Performance Optimization",
+        "• Media & Asset Optimization"
+      ]
+    },
+    {
+      "name": "UI/UX Design",
+      "subconcepts": [
+        "• Fundamental Design Principles",
+        "• User Interface Design"
+      ]
+    },
+    {
+      "name": "Version Control",
+      "subconcepts": [
+        "• Git Basics & Fundamentals",
+        "• Branching Strategies & Collaboration"
+      ]
+    }
   ],
   "softskills": [
-    "Active Listening",
-    "Attention to Detail",
-    "Communication",
-    "Critical Thinking",
-    "Problem Solving"
+    "1. Adaptability",
+    "2. Attention to Detail",
+    "3. Communication",
+    "4. Collaboration",
+    "5. Creativity",
+    "6. Empathy",
+    "7. Patience",
+    "8. Problem Solving"
   ]
 }

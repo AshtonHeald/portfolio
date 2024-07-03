@@ -1,0 +1,122 @@
+---
+import { storyblokEditable, renderRichText } from "@storyblok/astro";
+import Heading from "../components/Heading.astro";
+
+const { blok } = Astro.props;
+const renderedRichText = renderRichText(blok.content);
+---
+
+<article {...storyblokEditable(blok)}>
+  <Heading heading={blok.title} />
+  <div>
+    <div
+      class="mb-4 flex flex-1 flex-col gap-3 md:float-right md:ml-4 md:w-1/2"
+    >
+      <img
+        class="aspect-video"
+        alt={blok.image.alt}
+        src={`${blok.image.filename}`}
+      />
+
+      <div class="mt-auto grid grid-cols-2 gap-3">
+        {
+          blok.buttons?.map((button, index) => {
+            const buttonClass =
+              index === 1 ? "btn btn-primary" : "btn btn-neutral";
+            return (
+              <a href={button.href} class={`w-full gap-1 ${buttonClass}`}>
+                {buttonClass.includes("btn-primary") ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+                    />
+                  </svg>
+									
+                )}
+								{button.text}
+              </a>
+            );
+          })
+        }
+      </div>
+    </div>
+    <div class="flex-1">
+      <div class="list-style prose" set:html={renderedRichText} />
+    </div>
+  </div>
+  <a
+    class="link-hover link link-primary mt-4 flex w-40 items-center gap-0.5"
+    href="/projects"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      class="h-4 w-4"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"></path>
+    </svg>
+    <span class="">Return to projects</span>
+  </a>
+</article>
+
+<style is:global>
+  .list-style ul,
+  ol {
+    padding-left: 1.2rem;
+  }
+  .list-style ul li {
+    list-style: disc;
+  }
+  .list-style ol li {
+    list-style: decimal;
+  }
+  .prose h3 {
+    display: flex;
+    flex-direction: column;
+  }
+  .prose h3:first-of-type {
+    color: oklch(var(--p));
+  }
+  .prose h3:not(:first-of-type) {
+    margin-top: 16px;
+  }
+  .prose h3:not(:first-of-type) b {
+    padding-top: 8px;
+  }
+  .prose h3:not(:first-of-type)::before {
+    content: "";
+    border-top: 1px solid oklch(var(--b3));
+    padding: 1px;
+    opacity: 50%;
+  }
+</style>

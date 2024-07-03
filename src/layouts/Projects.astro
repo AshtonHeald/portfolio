@@ -1,31 +1,42 @@
 ---
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import { storyblokEditable } from "@storyblok/astro";
-import Title from "../components/Title.astro";
-
 const { blok } = Astro.props;
-
-let featuredBlok = blok.projects.find(blok => blok.component === 'featured');
-
+import Title from "../components/Title.astro";
+let featuredBlok = blok.projects.find((blok) => blok.component === "featured");
 ---
 
-<div {...storyblokEditable(blok)} class="grid gap-4 ">
-	<div class="grid gap-2">
+<div {...storyblokEditable(blok)} class="grid gap-4">
+  <div class="grid gap-2">
     <Title title="Featured Project" />
-		<StoryblokComponent blok={featuredBlok} />
-	</div>
+    <StoryblokComponent blok={featuredBlok} />
+  </div>
   <div class="grid gap-2">
     <Title title="All Projects" />
     <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {
-        blok.projects?.filter(blok => blok.component === 'project').map((blok) => {
-          return (
-            <div class="">
-              <StoryblokComponent blok={blok} />
+        blok.projects
+          ?.filter((blok) => blok.component === "project")
+          .map((blok) => {
+            return (
+              <div class="">
+                <button class="group relative overflow-hidden border-4 border-base-300">
+                  <img
+                    src={blok.image?.filename}
+                    alt={blok.image?.alt}
+                    class="aspect-video w-full"
+                  />
+                  <div class="absolute bottom-0 left-0 right-0 top-0 flex flex-col items-center justify-center bg-neutral opacity-0 transition-all hover:opacity-95">
+                    <h4 class="mb-1 text-2xl font-semibold text-primary">
+                      {blok.title}
+                    </h4>
+                    <span class="text-neutral-content">View Details</span>
+                  </div>
+                </button>
               </div>
             );
           })
-        }
-	</div>
-</div>
+      }
+    </div>
+  </div>
 </div>

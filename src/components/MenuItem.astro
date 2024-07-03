@@ -1,10 +1,14 @@
 ---
-const { href, text  } = Astro.props;
+const { href, text } = Astro.props;
 ---
-<li>
-  
-</li>
-<a class="link link-primary link-hover" href={href} target="_blank" rel="noopener noreferrer">
-	<slot />
-	<span>{text}</span>
+
+<li></li>
+<a
+  class="link-hover link link-primary"
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <slot />
+  <span>{text}</span>
 </a>
