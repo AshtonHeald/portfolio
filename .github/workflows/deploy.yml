@@ -30,6 +30,8 @@ jobs:
           package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
       - name: Verify Environment Variable
         run: echo $STORYBLOK_TOKEN
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
   deploy:
     needs: build
