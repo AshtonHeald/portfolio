@@ -1,54 +1,110 @@
-# Astro Starter Kit: Basics
+<div align="center">
+  <img src="public/logo.svg" alt="logo" width="200" height="auto" />
+  <h1>Todo List</h1>
+  <p>
+    Master Your ToDos: Simplify Your Productivity with Seamless Task Management!
+  </p>
+  <h4>
+    <a href="https://gh.ashthe.dev/todo/">View Demo</a>
+    &emsp;&emsp;
+    <a href="https://github.com/AshtonHeald/todo/issues/new">Report Bug</a>
+  </h4>
+</div>
 
-```sh
-npm create astro@latest -- --template basics
+## Table of Contents
+- [About](#about)
+  - [Screenshots](#screenshots)
+  - [Description](#description)
+  - [Features](#features)
+  - [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Development](#development)
+  - [Deployment](#deployment)
+- [License](#license)
+
+<!-- About -->
+##  About
+### Screenshots
+  
+|<img src="public/screenshot1.webp" alt="light-todos" />|<img src="public/screenshot3.webp" alt="light-todo-edit" />|
+|:---:|:---:|
+|<img src="public/screenshot2.webp" alt="dark-todos-full" />|<img src="public/screenshot4.webp" alt="dark-todos-trash" />|
+
+### Description
+  <p>Todo App is a dynamic web application designed to streamline your task management experience; Allowing users to organize their tasks effortlessly. With CRUD functionality, drag-and-drop sorting, modals for detailed task views, and local storage capabilities, Todo App ensures seamless task management and productivity enhancement.</p>
+
+> [!NOTE]
+>This app uses local storage, data will not carry over to/from other devices.
+
+### Features
+
+<dl>
+  <dt>CRUD Functionality</dt>
+  <dd>Seamlessly Create, Read, Update, and Delete tasks, ensuring flexibility and control over task management.</dd>
+  <dt>Drag and Drop Sorting</dt>
+  <dd>Facilitate intuitive task organization through drag-and-drop functionality. (press and hold item to drag)</dd>
+  <dt>Modals</dt>
+  <dd>Enhance user interaction with modal windows, providing a focused view for task editing and trash handling.</dd>
+  <dt>Local Storage</dt>
+  <dd>Persist task data locally, ensuring seamless access and preservation of tasks across sessions.</dd>
+</dl>
+
+### Tech Stack
+
+<div>
+<img height="32" width="32" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" />
+<img height="32" width="32" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+<img height="32" width="32" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
+<img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/shadcnui.svg" />
+<img height="32" width="32" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" />
+</div>
+
+<p><b>Other:</b> DnD-Kit, Lucide, Fontsource</p>
+
+<!-- Getting Started -->
+##  Getting Started
+### Prerequisites
+This project uses pnpm as package manager
+```bash
+ npm install --global pnpm
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### Installation
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+Clone the repository
+```bash
+git clone https://github.com/AshtonHeald/todo.git
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Install dependencies
+```
+pnpm install
+```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Development
 
-Any static assets, like images, can be placed in the `public/` directory.
+Start Vite dev server in the current directory.
+```bash
+pnpm run dev
+```
 
-## 🧞 Commands
+Locally preview the production build. Do not use this as a production server as it's not designed for it.
+```bash
+pnpm run preview
+```
 
-All commands are run from the root of the project, from a terminal:
+### Deployment
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Build for production. [Static Deploy](https://vitejs.dev/guide/static-deploy.html)
+```bash
+pnpm run build
+```
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+<!-- Licence -->
+### License
+
+Distributed under the MIT License. See `LICENSE.md` for more information.
