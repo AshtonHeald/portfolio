@@ -1,13 +1,11 @@
 <div align="center">
   <img src="public/logo.svg" alt="logo" width="200" height="auto" />
-  <h1>Todo List</h1>
+  <h1>Portfolioᵛ³</h1>
   <p>
-    Master Your ToDos: Simplify Your Productivity with Seamless Task Management!
+    
   </p>
   <h4>
     <a href="https://gh.ashthe.dev/todo/">View Demo</a>
-    &emsp;&emsp;
-    <a href="https://github.com/AshtonHeald/todo/issues/new">Report Bug</a>
   </h4>
 </div>
 
@@ -28,9 +26,10 @@
 ##  About
 ### Screenshots
   
-|<img src="public/screenshot1.webp" alt="light-todos" />|<img src="public/screenshot3.webp" alt="light-todo-edit" />|
+|<img src="public/screenshot.webp" alt="light-todos" />|<img src="public/screenshot1.webp" alt="light-todo-edit" />|
 |:---:|:---:|
-|<img src="public/screenshot2.webp" alt="dark-todos-full" />|<img src="public/screenshot4.webp" alt="dark-todos-trash" />|
+|<img src="public/screenshot2.webp" alt="dark-todos-full" />|<img src="public/screenshot3.webp" alt="dark-todos-trash" />|
+|<img src="public/screenshot4.webp" alt="dark-todos-full" />|<img src="public/screenshot5.webp" alt="dark-todos-trash" />|
 
 ### Description
   <p>Todo App is a dynamic web application designed to streamline your task management experience; Allowing users to organize their tasks effortlessly. With CRUD functionality, drag-and-drop sorting, modals for detailed task views, and local storage capabilities, Todo App ensures seamless task management and productivity enhancement.</p>
