@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="public/logo.svg" alt="logo" width="200" height="auto" />
+  <img src="public/ash-happy.webp" alt="logo" width="200" height="auto" />
   <h1>Portfolioᵛ³</h1>
   <p>
-    
+    Personal, Professional Web Development Portfolio
   </p>
   <h4>
     <a href="https://gh.ashthe.dev/todo/">View Demo</a>
