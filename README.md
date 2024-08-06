@@ -26,10 +26,9 @@
 |<img src="public/screenshot4.webp" alt="dark-todos-full" />|<img src="public/screenshot5.webp" alt="dark-todos-trash" />|
 
 ### Description
-  <p></p>
+  <p>As a front-end developer seeking to showcasing my skills and projects, I set out to create a personal portfolio website. My objective was to build a visually appealing and user-friendly platform that effectively highlights my expertise, completed projects, and experience in web development. This portfolio has evolved through several iterations, with this being the third and most current version. It features a modern, sleek design inspired by the best elements from my favorite developer portfolios, bringing together a cohesive and polished presentation of me and my work.
+</p>
 
-> [!NOTE]
->This app uses local storage, data will not carry over to/from other devices.
 
 ### Features
 
