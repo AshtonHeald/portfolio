@@ -15,12 +15,6 @@
   - [Description](#description)
   - [Features](#features)
   - [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Development](#development)
-  - [Deployment](#deployment)
-- [License](#license)
 
 <!-- About -->
 ##  About
@@ -32,7 +26,7 @@
 |<img src="public/screenshot4.webp" alt="dark-todos-full" />|<img src="public/screenshot5.webp" alt="dark-todos-trash" />|
 
 ### Description
-  <p>Todo App is a dynamic web application designed to streamline your task management experience; Allowing users to organize their tasks effortlessly. With CRUD functionality, drag-and-drop sorting, modals for detailed task views, and local storage capabilities, Todo App ensures seamless task management and productivity enhancement.</p>
+  <p></p>
 
 > [!NOTE]
 >This app uses local storage, data will not carry over to/from other devices.
@@ -40,70 +34,28 @@
 ### Features
 
 <dl>
-  <dt>CRUD Functionality</dt>
-  <dd>Seamlessly Create, Read, Update, and Delete tasks, ensuring flexibility and control over task management.</dd>
-  <dt>Drag and Drop Sorting</dt>
-  <dd>Facilitate intuitive task organization through drag-and-drop functionality. (press and hold item to drag)</dd>
-  <dt>Modals</dt>
-  <dd>Enhance user interaction with modal windows, providing a focused view for task editing and trash handling.</dd>
-  <dt>Local Storage</dt>
-  <dd>Persist task data locally, ensuring seamless access and preservation of tasks across sessions.</dd>
+  <dt>3D Model</dt>
+  <dd>A 3D avatar of myself created using Ready Player Me</dd>
+  <dt>CMS Integration</dt>
+  <dd>Dynamic project pages and content management powered by a CMS</dd>
+  <dt>Theme Options</dt>
+  <dd>Light and dark mode for an enhanced user experience</dd>
+  <dt>Contact Form</dt>
+  <dd>A fully functional contact form utilizing Email.js for easy communicatiom</dd>
+  <dt>Location Map</dt>
+  <dd>An interactive location map powered by OpenStreetMap</dd>
+  <dt>Typewriter Effect</dt>
+  <dd>A dynamic typewriter effect implemented using the react-type-animation library</dd>
 </dl>
 
 ### Tech Stack
 
 <div>
-<img height="32" width="32" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" />
+  <img height="32" width="32" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg" />
 <img height="32" width="32" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
-<img height="32" width="32" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
-<img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/shadcnui.svg" />
+<img height="32" width="32" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" />
 <img height="32" width="32" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" />
 </div>
 
-<p><b>Other:</b> DnD-Kit, Lucide, Fontsource</p>
+<p><b>Other:</b> DaisyUI, Storyblok CMS, EmailJS, OpenStreetMap, Fontsource, Three.js, ReadyPlayerMe/Visage</p>
 
-<!-- Getting Started -->
-##  Getting Started
-### Prerequisites
-This project uses pnpm as package manager
-```bash
- npm install --global pnpm
-```
-
-### Installation
-
-Clone the repository
-```bash
-git clone https://github.com/AshtonHeald/todo.git
-```
-
-Install dependencies
-```
-pnpm install
-```
-
-### Development
-
-Start Vite dev server in the current directory.
-```bash
-pnpm run dev
-```
-
-Locally preview the production build. Do not use this as a production server as it's not designed for it.
-```bash
-pnpm run preview
-```
-
-### Deployment
-
-Build for production. [Static Deploy](https://vitejs.dev/guide/static-deploy.html)
-```bash
-pnpm run build
-```
-
----
-
-<!-- Licence -->
-### License
-
-Distributed under the MIT License. See `LICENSE.md` for more information.
