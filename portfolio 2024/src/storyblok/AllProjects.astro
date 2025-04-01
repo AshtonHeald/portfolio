@@ -1,0 +1,36 @@
+---
+import { storyblokEditable, useStoryblokApi } from "@storyblok/astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Title from "../components/Title.astro";
+import Heading from "../components/Heading.astro";
+
+const { blok } = Astro.props;
+
+const storyblokApi = useStoryblokApi();
+const { data } = await storyblokApi.get(`cdn/stories`, {
+  version: "draft", // or 'published'
+  starts_with: "projects/",
+  is_startpage: 0,
+});
+
+const projects = data.stories;
+---
+
+<div {...storyblokEditable(blok)}>
+  <Heading heading="Projects" subheading="Showcasing some of my best work!" />
+  <Title title="All Projects" />
+
+  <ul class="mt-2.5 grid gap-5 sm:grid-cols-2">
+    {
+      projects?.length &&
+        projects.map((project) => {
+          project.content.slug = project.slug;
+          return (
+            <li>
+              <ProjectCard project={project.content} />
+            </li>
+          );
+        })
+    }
+  </ul>
+</div>

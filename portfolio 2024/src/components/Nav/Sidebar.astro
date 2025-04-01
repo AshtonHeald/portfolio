@@ -1,0 +1,66 @@
+---
+const navItems = [
+  { text: "About", href: "/about" },
+  { text: "Skills", href: "/skills" },
+  { text: "Projects", href: "/projects" },
+  { text: "Contact", href: "/contact" },
+];
+---
+
+<div
+  id="navigation"
+  class="top-[53px] hidden w-64 border-r border-base-300 bg-base-100 xl:absolute xl:block xl:h-[620px]"
+>
+  <div id="nav-header" class="flex flex-col text-center">
+    <a
+      href="https://ashthe.dev"
+      aria-label="Visit Ash's website"
+      id="avatar"
+      class="mx-auto mb-4 mt-8 h-28 w-28 rounded-full border-[5px] border-base-300 bg-[url('/ash-happy.webp')] bg-[length:123px_115px] bg-center transition-all hover:border-primary hover:bg-[url('/ash-smile.webp')] focus:border-primary focus-visible:outline-none"
+    ></a>
+    <span class="font-bold">Front-End Developer</span>
+    <a
+      class="px-auto link-hover link link-primary mx-auto mb-2 mt-0.5 w-40 text-center"
+      href="https://www.linkedin.com/in/ashtonheald/"
+      id="status"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Visit Ashton Heald's LinkedIn profile: Currently looking for work"
+    >
+      @ Looking for Work
+    </a>
+    <span id="status-line"></span>
+  </div>
+  <nav>
+    <ul class="flex flex-col">
+      {
+        navItems.map((item) => (
+          <li class="links grid place-items-center p-1">
+            <a
+              class="nav-item mx-auto w-40 p-1 text-center text-base font-normal hover:text-primary"
+              href={item.href}
+              aria-label={`Navigate to ${item.text} page`}
+            >
+              {item.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<style>
+  #status {
+    display: flex;
+    flex-direction: column;
+  }
+  #status-line {
+    content: "";
+    border-top: 1px solid oklch(var(--b3));
+    padding: 5px;
+    margin-top: 10px;
+    width: 160px;
+    margin: 0 auto;
+  }
+</style>
