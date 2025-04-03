@@ -1,29 +1,109 @@
 ---
-import './src/styles/global.css'
+import "./src/styles/global.css";
+import { cn } from "@/lib/utils";
 
 import "@fontsource-variable/inter";
 import "@fontsource-variable/playfair-display";
+
+import Theme from "../components/Theme.astro";
+import Sidebar from "./Sidebar.astro";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Ashton G. Heald - Developer Portfolio</title>
+    <script is:inline>
+      // Prevent FART effect
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.classList.add("light");
+      } else {
+        document.documentElement.classList.add(localStorage.getItem("theme"));
+      }
+    </script>
+    <script>
+      import { themeChange } from "theme-change";
+      themeChange();
+      // 👆 you could import the CDN directly instead of these two lines
+    </script>
+  </head>
+  <body
+    class="max-auto max-w-full font-sans xl:grid xl:h-screen xl:place-items-center xl:overflow-hidden"
+  >
+    <div
+      class={cn(
+        "absolute inset-0",
+        "[background-size:40px_40px]",
+        "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
+        "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"
+      )}
+    >
+    </div>
+    {/* Radial gradient for the container to give a faded look */}
+    <div
+      class="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_50%,black)] dark:bg-black"
+    >
+    </div>
+  </body>
+  <div
+    class="browser-box h-[100dvh] w-full bg-background xl:relative xl:h-[675px] xl:max-w-[1200px] xl:rounded-sm xl:border"
+  >
+    <div
+      class="browser-toolbar rounded-t-sm fixed z-10 inline-flex w-full items-center justify-between border-b bg-background py-3 xl:relative xl:border-0 xl:pr-[.75rem!important]"
+    >
+      <div class="xl:hidden">sheet wrapper</div>
+      <Theme />
+    </div>
+    <Sidebar />
+    <div class="border-base-300 h-full xl:h-auto xl:border-t">
+      <main
+        class="h-full w-full overflow-y-auto pt-[60px] xl:ml-64 xl:h-[620px] xl:w-[calc(100%-256px)] xl:pt-0"
+      >
+        <slot />
+      </main>
+    </div>
+  </div>
 </html>
+<style is:global>
+  html * {
+    scroll-behavior: smooth;
+  }
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+  #home {
+    display: grid;
+    place-items: center;
+  }
+
+  h1,
+	h2,
+	h3,
+	/*
+	h4 {
+		@apply font-serif;
+		font-weight: 600;
 	}
+		*/
+	h5,
+	h6 {
+    font-weight: 600;
+  }
+
+  @media (min-width: 1280px) {
+    .browser-box .browser-toolbar:before {
+      content: "";
+      margin-right: 4.8rem;
+      aspect-ratio: 1 / 1;
+      height: 0.75rem;
+      border-radius: 9999px;
+      opacity: 0.3;
+      box-shadow:
+        1.4em 0,
+        2.8em 0,
+        4.2em 0;
+    }
+  }
 </style>

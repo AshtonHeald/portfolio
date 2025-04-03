@@ -1,0 +1,34 @@
+---
+import NavMenu from "@/components/NavMenu.vue";
+---
+
+<div
+  id="navigation"
+  class="border-base-300 bg-base-100 top-[53px] hidden w-64 border-r xl:absolute xl:block xl:h-[620px]"
+>
+  <div id="nav-header" class="flex flex-col text-center">
+    <a
+      href="https://ashthe.dev"
+      aria-label="Visit Ash's website"
+      id="avatar"
+      class="border-base-300 mx-auto mb-4 mt-8 h-28 w-28 rounded-full border-[5px] bg-[url('/ash.png')] bg-[length:123px_115px] bg-center transition-all hover:border-primary hover:bg-[url('/ash-smile.png')] focus:border-primary focus-visible:outline-none"
+    ></a>
+    <span class="font-bold">Front-End Developer</span>
+    <div class="mb-2 mt-0.5">@ashtonheald</div>
+
+    <span id="status-line" class="mx-auto mb-3 mt-1 border-t"></span>
+  </div>
+  <NavMenu />
+</div>
+
+<style>
+  #status {
+    display: flex;
+    flex-direction: column;
+  }
+  #status-line {
+    content: "";
+
+    width: 160px;
+  }
+</style>
