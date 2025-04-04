@@ -19,7 +19,9 @@ import {
       <Button variant="ghost" size="icon"> <Menu class="!h-5 !w-5" /> </Button>
     </SheetTrigger>
     <SheetContent side="left">
-      <slot />
+      <SheetClose as-child>
+        <slot />
+      </SheetClose>
     </SheetContent>
   </Sheet>
 </template>

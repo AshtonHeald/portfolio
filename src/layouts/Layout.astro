@@ -38,7 +38,7 @@ import Navbar from "./Navbar.astro";
     <div
       class={cn(
         "xl:absolute inset-0",
-        "[background-size:40px_40px]",
+        "[background-size:32px_32px]",
         "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
         "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
       )}
@@ -54,7 +54,7 @@ import Navbar from "./Navbar.astro";
     class="browser-box bg-background h-[calc(100dvh-60px)] w-full xl:relative xl:h-[675px] xl:max-w-[1200px] xl:rounded-sm xl:border"
   >
     <div
-      class="browser-toolbar bg-background fixed top-0 z-10 inline-flex w-full items-center justify-between rounded-t-sm border-b px-3 py-3 xl:relative xl:top-auto xl:border-0 xl:pr-[.75rem!important]"
+      class="browser-toolbar bg-background fixed top-0 z-10 inline-flex w-full items-center justify-between rounded-t-sm border-b px-2 py-2 xl:relative xl:top-auto xl:border-0 xl:pl-0"
     >
       <div class="xl:hidden">
         <Navbar />
@@ -66,7 +66,7 @@ import Navbar from "./Navbar.astro";
     </div>
     <div class="border-base-300 h-full xl:h-auto xl:border-t">
       <main
-        class="mt-[60px] h-full w-full overflow-y-auto xl:mt-0 xl:ml-64 xl:h-[620px] xl:w-[calc(100%-256px)]"
+        class="mt-13 h-full w-full overflow-y-auto xl:mt-0 xl:ml-64 xl:h-[620px] xl:w-[calc(100%-256px)]"
       >
         <slot />
       </main>
@@ -100,7 +100,6 @@ import Navbar from "./Navbar.astro";
   @media (min-width: 1280px) {
     .browser-box .browser-toolbar:before {
       content: "";
-      margin-right: 4.8rem;
       aspect-ratio: 1 / 1;
       height: 0.75rem;
       border-radius: 9999px;
