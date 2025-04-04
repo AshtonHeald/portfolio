@@ -1,0 +1,15 @@
+---
+import NavMenu from "@/components/NavMenu.vue";
+import MobileMenu from "@/components/MobileMenu.vue";
+---
+
+<div class="navbar">
+  <div class="hidden md:block">
+    <NavMenu />
+  </div>
+  <div class="md:hidden">
+    <MobileMenu client:load>
+      <NavMenu />
+    </MobileMenu>
+  </div>
+</div>
