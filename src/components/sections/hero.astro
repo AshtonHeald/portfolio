@@ -1,14 +1,14 @@
 ---
 import * as content from "@/content/sections/hero.md";
-
+import Particles from "@/components/ParticleBackground.vue";
 import TypeWriter from "@/components/TypeWriter.jsx";
-//import WordFlip from "@/components/WordFlip.vue";
 
 const textSequence = content.frontmatter.typewriterStrings
   .map((text: string) => [text, 3000])
   .flat();
 ---
 
+<Particles client:load />
 <div class="mb-32 grid place-items-center text-center">
   <h1
     class="mb-2 text-center font-serif text-[2.5rem] !font-black md:mb-8 md:text-6xl lg:mb-8 lg:text-7xl"
@@ -22,7 +22,6 @@ const textSequence = content.frontmatter.typewriterStrings
     <span class="bg-primary text-secondary">
       <TypeWriter textSequence={textSequence} client:load />
     </span>
-    <!--<WordFlip TypeStrings={TypeStrings} client:load />-->
   </span>
 </div>
 
