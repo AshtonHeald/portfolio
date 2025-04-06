@@ -1,0 +1,68 @@
+---
+import * as content from "@/content/sections/about.md";
+import { Content as Body } from "@/content/sections/about.md";
+import Info from "@/components/Info.astro";
+import { badgeVariants } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
+//import LinkPreview from "@/components/LinkPreview";
+
+import { FileUser, Heart, Shapes, MapPin, SquarePen } from "@lucide/astro";
+---
+
+<h3 class="text-xl font-semibold">
+  {content.frontmatter.title}
+</h3>
+<div class="flex">
+  <article class="w-3/5">
+    <div class="my-5 border-b pb-5">
+      <h4 class="font-sans font-bold">{content.frontmatter.subtitle}</h4>
+      <Body />
+    </div>
+    <div class="info-wrapper mb-5 grid gap-3 leading-4">
+      <Info icon={MapPin}>{content.frontmatter.location}</Info>
+      <Info>
+        <SquarePen class="h-5 w-5" />
+        <a href=`https://${content.frontmatter.blog}` class="!underline"
+          >Thoughts & Tutorials</a
+        >
+        <!--<LinkPreview
+          client:load
+          url=`https://${content.frontmatter.blog}`
+          text="Thoughts & Tutorials"
+        /> -->
+      </Info>
+
+      <Info>
+        <Heart class="h-5 w-5" />
+        <ul class="flex gap-1">
+          {
+            content.frontmatter.interests.map((interest: string) => (
+              <li class={`${badgeVariants({ variant: "outline" })} rounded-xs`}>
+                {interest}
+              </li>
+            ))
+          }
+        </ul>
+      </Info>
+      <Info>
+        <Shapes class="h-5 w-5" />
+        <ul class="flex gap-1">
+          {
+            content.frontmatter.hobbies.map((hobby: string) => (
+              <li class={`${badgeVariants({ variant: "outline" })} rounded-xs`}>
+                {hobby}
+              </li>
+            ))
+          }
+        </ul>
+      </Info>
+    </div>
+
+    <a href="" class={`${buttonVariants({ variant: "default" })} rounded-sm`}>
+      <FileUser class="h-5 w-5" />
+      View Resume</a
+    >
+  </article>
+
+  <div>https://models.readyplayer.me/6751f0dfdf8d73c64cb69b75.glb</div>
+</div>
