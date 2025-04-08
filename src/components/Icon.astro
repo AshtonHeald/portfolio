@@ -1,0 +1,11 @@
+---
+// src/components/LucideIcon.astro
+import { icons } from "@lucide/astro";
+
+const { name = "", ...props } = Astro.props;
+
+// Find the matching icon component
+const IconComponent = icons[name];
+---
+
+{IconComponent && <IconComponent {...props} />}

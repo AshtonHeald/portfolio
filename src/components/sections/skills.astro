@@ -1,0 +1,76 @@
+---
+import * as content from "@/content/sections/skills.md";
+
+import IconComponent from "@/components/Icon.astro";
+
+import {
+  Card,
+  //CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+//import { badgeVariants } from "@/components/ui/badge";
+
+import { getCollection } from "astro:content";
+const skills = (await getCollection("skills")).sort((a, b) =>
+  a.id.localeCompare(b.id),
+);
+
+const Icon = content.frontmatter.icon || "";
+
+import { Content as Footer } from "@/content/skills/03javascriptecosystem.md";
+---
+
+<h3 class="text-xl font-semibold">
+  {content.frontmatter.title}
+</h3>
+
+<div class="grid grid-cols-3 grid-rows-3 gap-4">
+  {
+    skills.map((skill: any, index: number) => (
+      <Card
+        class={`col-span-1 flex h-full w-full flex-col px-4 py-8 ${index === 2 ? "row-span-2" : "row-span-1"}`}
+        data-key={skill.id}
+      >
+        <CardHeader class="">
+          <div class="flex items-center gap-1">
+            {/* <IconComponent name={skill.data.icon} class="h-5 w-5" /> */}
+            {(() => {
+              const icon = skill.data.icon || Icon;
+              return <IconComponent name={icon} class="h-5 w-5" />;
+            })()}
+
+            <CardTitle>{skill.data.title}</CardTitle>
+          </div>
+          <CardDescription>{skill.data.description}</CardDescription>
+        </CardHeader>
+        {/* <CardContent class="p-3 pt-0">
+          <ul class="flex flex-wrap gap-1">
+            {(() => {
+              const concepts = skill.data.concepts || [];
+
+              return (
+                <>
+                  {concepts.map((concept: string, i: number) => (
+                    <span class={badgeVariants({ variant: "secondary" })}>
+                      {concept}
+                    </span>
+                  ))}
+                </>
+              );
+            })()}
+          </ul>
+        </CardContent> */}
+        {index === 2 && (
+          <CardFooter class="mt-auto flex-col text-sm">
+            <CardDescription>
+              <Footer />
+            </CardDescription>
+          </CardFooter>
+        )}
+      </Card>
+    ))
+  }
+</div>
