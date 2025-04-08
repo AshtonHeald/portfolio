@@ -5,6 +5,7 @@ import Info from "@/components/Info.astro";
 import { badgeVariants } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 //import LinkPreview from "@/components/LinkPreview";
+import ModelFull from "@/components/ModelFull.tsx";
 
 import { FileUser, Heart, Shapes, MapPin, SquarePen } from "@lucide/astro";
 ---
@@ -64,5 +65,9 @@ import { FileUser, Heart, Shapes, MapPin, SquarePen } from "@lucide/astro";
     >
   </article>
 
-  <div>https://models.readyplayer.me/6751f0dfdf8d73c64cb69b75.glb</div>
+  <div>
+    <ModelFull client:load />
+  </div>
 </div>
+
+<style></style>
