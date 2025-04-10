@@ -59,7 +59,7 @@ const iconComponent = computed(() => {
 
     <!-- Hover Content -->
     <CardContent
-      class="bg-primary absolute inset-0 z-10 flex transform flex-col justify-center p-6 transition-transform duration-300 ease-in-out"
+      class="bg-primary absolute inset-0 z-10 flex transform flex-col p-6 transition-transform duration-300 ease-in-out"
       :class="{
         'translate-y-0': isHovered,
         'translate-y-full': !isHovered,
