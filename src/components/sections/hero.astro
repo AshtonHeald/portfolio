@@ -9,7 +9,7 @@ const textSequence = content.frontmatter.typewriterStrings
 ---
 
 <Particles client:load />
-<div class="mb-32 grid place-items-center text-center">
+<div class="z-10 mb-32 grid place-items-center text-center">
   <h1
     class="mb-2 text-center font-serif text-[2.5rem] !font-black md:mb-8 md:text-6xl lg:mb-8 lg:text-7xl"
   >
@@ -25,7 +25,7 @@ const textSequence = content.frontmatter.typewriterStrings
   </span>
 </div>
 
-<style>
+<style scoped>
   .name {
     -webkit-text-stroke: 1px var(--foreground);
     text-stroke: 1px var(--foreground);
