@@ -1,16 +1,15 @@
 <script setup>
-import { ref, computed } from "vue";
-import { onClickOutside } from "@vueuse/core";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import * as icons from "lucide-vue-next";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
-  CardFooter,
   CardContent,
 } from "@/components/ui/card";
 
+// Props
 const props = defineProps({
   id: String,
   title: String,
@@ -20,58 +19,87 @@ const props = defineProps({
   hoverContent: String,
 });
 
-const isHovered = ref(false);
+// Global reactive shared state
+const currentHoveredId = ref(null);
 const cardRef = ref(null);
 
-// Handle tap toggling
-function toggleHover() {
-  isHovered.value = !isHovered.value;
+// Helpers
+const isHovered = computed(() => currentHoveredId.value === props.id);
+
+// Touch logic
+const touchStartTime = ref(0);
+const touchEndTime = ref(0);
+const touchThreshold = 200;
+
+function handleTouchStart() {
+  touchStartTime.value = Date.now();
 }
 
-// Close the hover content if clicked outside
-onClickOutside(cardRef, () => {
-  isHovered.value = false;
+function handleTouchEnd(event) {
+  touchEndTime.value = Date.now();
+  if (touchEndTime.value - touchStartTime.value < touchThreshold) {
+    if (currentHoveredId.value === props.id) {
+      currentHoveredId.value = null; // toggle off
+    } else {
+      currentHoveredId.value = props.id; // toggle on
+    }
+  }
+}
+
+// Click/touch outside handler
+function handleClickOutside(event) {
+  if (cardRef.value && !cardRef.value.contains(event.target)) {
+    currentHoveredId.value = null;
+  }
+}
+
+onMounted(() => {
+  document.addEventListener("touchstart", handleClickOutside, true);
+  document.addEventListener("mousedown", handleClickOutside, true); // for desktop too
 });
 
-// Dynamically resolve icon component
-const iconComponent = computed(() => {
-  return icons[props.icon] || icons["CircleSmall"];
+onBeforeUnmount(() => {
+  document.removeEventListener("touchstart", handleClickOutside, true);
+  document.removeEventListener("mousedown", handleClickOutside, true);
 });
+
+// Icon
+const iconComponent = computed(() => icons[props.icon] || icons["CircleSmall"]);
 </script>
 
 <template>
   <Card
-    ref="cardRef"
-    class="relative col-span-1 flex h-full w-full cursor-pointer flex-col overflow-hidden px-6 py-8"
+    class="relative col-span-1 flex h-full w-full cursor-pointer flex-col overflow-hidden"
     :class="{ 'row-span-2': isFeatured, 'row-span-1': !isFeatured }"
     :data-key="id"
-    @mouseenter="isHovered = true"
-    @mouseleave="isHovered = false"
-    @click="toggleHover"
+    @mouseenter="currentHoveredId = id"
+    @mouseleave="currentHoveredId = null"
+    @touchstart="handleTouchStart"
+    @touchend="handleTouchEnd"
   >
-    <CardHeader>
-      <div class="flex items-center gap-1">
-        <component :is="iconComponent" class="h-5 w-5" />
-        <CardTitle>{{ title }}</CardTitle>
-      </div>
-      <CardDescription>{{ description }}</CardDescription>
-    </CardHeader>
+    <!-- Use a div inside to capture the real DOM element -->
+    <div ref="cardRef" class="contents">
+      <CardHeader class="h-full grid-rows-[inherit] px-6 py-8">
+        <div class="flex items-center gap-1">
+          <component :is="iconComponent" class="h-5 w-5" />
+          <CardTitle>{{ title }}</CardTitle>
+        </div>
+        <CardDescription>{{ description }}</CardDescription>
+      </CardHeader>
 
-    <!-- Hover Content -->
-    <CardContent
-      class="bg-primary absolute inset-0 z-10 flex transform flex-col p-6 transition-transform duration-300 ease-in-out"
-      :class="{
-        'translate-y-0': isHovered,
-        'translate-y-full': !isHovered,
-      }"
-    >
-      <p class="text-primary-foreground">
-        <slot name="hover-content">
-          {{ hoverContent || "Hover content goes here" }}
-        </slot>
-      </p>
-    </CardContent>
-
-    <slot />
+      <CardContent
+        class="bg-primary absolute inset-0 z-10 flex transform flex-col p-6 transition-transform duration-300 ease-in-out"
+        :class="{
+          'translate-y-0': isHovered,
+          'translate-y-full': !isHovered,
+        }"
+      >
+        <p class="text-primary-foreground">
+          <slot name="hover-content">
+            {{ hoverContent || "Hover content goes here" }}
+          </slot>
+        </p>
+      </CardContent>
+    </div>
   </Card>
 </template>
