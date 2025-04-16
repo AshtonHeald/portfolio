@@ -66,7 +66,7 @@ import Navbar from "./Navbar.astro";
     </div>
     <div class="border-base-300 h-full xl:h-auto xl:border-t">
       <main
-        class="mt-13 h-full w-full overflow-y-auto xl:mt-0 xl:ml-64 xl:h-[620px] xl:w-[calc(100%-256px)]"
+        class="[&::-webkit-scrollbar-thumb]:[--border] mt-13 h-full w-full overflow-y-auto xl:mt-0 xl:ml-64 xl:h-[620px] xl:w-[calc(100%-256px)] [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:border-4 [&::-webkit-scrollbar-thumb]:border-transparent [&::-webkit-scrollbar-thumb]:bg-[var(--border)] [&::-webkit-scrollbar-thumb]:bg-clip-content [&::-webkit-scrollbar-track]:rounded-full"
       >
         <slot />
       </main>
