@@ -7,6 +7,9 @@ import { buttonVariants } from "@/components/ui/button";
 //import LinkPreview from "@/components/LinkPreview";
 import ModelFull from "@/components/ModelFull.tsx";
 
+import AboutModal from "@/components/AboutModal.vue";
+import { Button } from "@/components/ui/button";
+
 import { FileUser, Heart, Shapes, MapPin, SquarePen } from "@lucide/astro";
 ---
 
@@ -17,7 +20,13 @@ import { FileUser, Heart, Shapes, MapPin, SquarePen } from "@lucide/astro";
   <article class="w-3/5">
     <div class="my-5 border-b pb-5">
       <h4 class="font-sans font-bold">{content.frontmatter.subtitle}</h4>
-      <Body />
+      <p>
+        {content.frontmatter.introduction}
+        <AboutModal client:load slot="button">
+          <Body />
+        </AboutModal>
+        <!-- Pass your content file data here -->
+      </p>
     </div>
     <div class="info-wrapper mb-5 grid gap-3 leading-4">
       <Info icon={MapPin}>{content.frontmatter.location}</Info>
