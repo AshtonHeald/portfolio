@@ -1,9 +1,6 @@
 ---
 import * as content from "@/content/sections/skills.md";
 import { getCollection } from "astro:content";
-import { Content as Footer } from "@/content/skills/03javascriptecosystem.md";
-
-import { CardFooter } from "@/components/ui/card";
 
 import SkillCard from "@/components/SkillCard.vue";
 
@@ -22,19 +19,13 @@ const fallbackIcon = content.frontmatter.icon || "";
   {
     skills.map((skill, index) => (
       <SkillCard
-        client:load
+        client:visible
         id={skill.id}
         title={skill.data.title}
         description={skill.data.description}
         icon={skill.data.icon || fallbackIcon}
         isFeatured={index === 2}
-      >
-        {index === 2 && (
-          <CardFooter class="mt-auto flex-col text-sm">
-            <Footer />
-          </CardFooter>
-        )}
-      </SkillCard>
+      />
     ))
   }
 </div>
