@@ -1,0 +1,15 @@
+<ul class="flex flex-wrap gap-1">
+            {(() => {
+              const concepts = skill.data.concepts || [];
+
+              return (
+                <>
+                  {concepts.map((concept: string, i: number) => (
+                    <span class={badgeVariants({ variant: "secondary" })}>
+                      {concept}
+                    </span>
+                  ))}
+                </>
+              );
+            })()}
+          </ul>

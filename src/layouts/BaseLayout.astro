@@ -1,13 +1,11 @@
 ---
-import "./src/styles/global.css";
+import "@/styles/global.css";
 import { cn } from "@/lib/utils";
 
 import "@fontsource-variable/inter";
 import "@fontsource-variable/playfair-display";
 
-import Theme from "../components/Theme.vue";
-import Sidebar from "./Sidebar.astro";
-import Navbar from "./Navbar.astro";
+const { pageTitle } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,7 +15,7 @@ import Navbar from "./Navbar.astro";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Ashton G. Heald - Developer Portfolio</title>
+    <title>{pageTitle}</title>
     <script is:inline>
       // Prevent FART effect
       if (localStorage.getItem("theme") === null) {
@@ -49,29 +47,8 @@ import Navbar from "./Navbar.astro";
       class="pointer-events-none absolute inset-0 hidden items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_75%,black)] xl:flex dark:bg-black"
     >
     </div>
+    <slot />
   </body>
-  <div
-    class="browser-box bg-background h-[calc(100dvh-60px)] w-full xl:relative xl:h-[675px] xl:max-w-[1200px] xl:rounded-sm xl:border"
-  >
-    <div
-      class="browser-toolbar bg-background fixed top-0 z-10 inline-flex w-full items-center justify-between rounded-t-sm border-b px-2 py-2 xl:relative xl:top-auto xl:border-0 xl:pl-0"
-    >
-      <div class="xl:hidden">
-        <Navbar />
-      </div>
-      <Theme client:only />
-    </div>
-    <div class="hidden xl:block">
-      <Sidebar />
-    </div>
-    <div class="border-base-300 h-full xl:h-auto xl:border-t">
-      <main
-        class="[&::-webkit-scrollbar-thumb]:[--border] mt-13 h-full w-full overflow-y-auto xl:mt-0 xl:ml-64 xl:h-[620px] xl:w-[calc(100%-256px)] [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:border-4 [&::-webkit-scrollbar-thumb]:border-transparent [&::-webkit-scrollbar-thumb]:bg-[var(--border)] [&::-webkit-scrollbar-thumb]:bg-clip-content [&::-webkit-scrollbar-track]:rounded-full"
-      >
-        <slot />
-      </main>
-    </div>
-  </div>
 </html>
 <style is:global>
   html * {

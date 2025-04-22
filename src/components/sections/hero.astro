@@ -1,6 +1,5 @@
 ---
 import * as content from "@/content/sections/hero.md";
-import Particles from "@/components/ParticleBackground.vue";
 import TypeWriter from "@/components/TypeWriter.jsx";
 
 const textSequence = content.frontmatter.typewriterStrings
@@ -8,7 +7,6 @@ const textSequence = content.frontmatter.typewriterStrings
   .flat();
 ---
 
-<Particles client:load />
 <div class="z-10 mb-32 grid place-items-center text-center">
   <h1
     class="mb-2 text-center font-serif text-[2.5rem] !font-black md:mb-8 md:text-6xl lg:mb-8 lg:text-7xl"

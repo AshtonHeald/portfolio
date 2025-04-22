@@ -1,5 +1,5 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import PortfolioLayout from "@/layouts/PortfolioLayout.astro";
 import Home from "@/components/sections/Hero.astro";
 import About from "@/components/sections/About.astro";
 import Skills from "@/components/sections/Skills.astro";
@@ -16,7 +16,7 @@ const sections = [
 ];
 ---
 
-<Layout title="Ashton G. Heald - Portfolio">
+<PortfolioLayout pageTitle="Ashton G. Heald - Portfolio">
   {
     sections.map(({ name, component: Section }, index) => (
       <section
@@ -28,4 +28,4 @@ const sections = [
       </section>
     ))
   }
-</Layout>
+</PortfolioLayout>
