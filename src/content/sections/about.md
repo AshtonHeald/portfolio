@@ -11,5 +11,3 @@ interests:
   - "The Arts"
 hobbies: ["Coding", "Gaming", "Learning", "Reading", "Writing"]
 ---
-
-Lorem Ipsu mDolar Sum
