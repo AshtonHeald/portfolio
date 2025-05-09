@@ -19,6 +19,7 @@
     "@react-three/drei": "^10.0.6",
     "@react-three/fiber": "^9.1.2",
     "@tailwindcss/vite": "^4.1.0",
+    "@tanstack/vue-table": "^8.21.3",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",
     "@types/three": "^0.175.0",
