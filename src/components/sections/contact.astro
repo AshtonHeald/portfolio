@@ -1,0 +1,76 @@
+---
+import * as content from "@/content/sections/contact.md";
+//import { ContactForm } from "@/components/Form";
+import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
+import { Github, Linkedin, Twitter, Mail } from "@lucide/astro";
+import Form from "@/components/Form.vue";
+---
+
+<h3 class="text-xl font-semibold">
+  {content.frontmatter.title}
+</h3>
+<div class="mt-5 flex gap-4">
+  <div class="w-7/12">
+    <Form client:load />
+  </div>
+  <div class="flex w-5/12 flex-col gap-4">
+    <div>
+      <h4>Contact Info</h4>
+      <p>Feel free to reach out to me directly or through the form.</p>
+      <Button variant="secondary" class="mr-1">
+        <Mail /> contact@ashtonheald.me
+      </Button>
+    </div>
+    <div>
+      <h5>Connect With Me</h5>
+      <div class="flex gap-2">
+        <a
+          href=""
+          class={`${buttonVariants({ variant: "secondary", size: "icon" })} rounded-xs`}
+        >
+          <Github />
+        </a>
+        <a
+          href=""
+          class={`${buttonVariants({ variant: "secondary", size: "icon" })} rounded-xs`}
+        >
+          <Linkedin />
+        </a>
+        <a
+          href=""
+          class={`${buttonVariants({ variant: "secondary", size: "icon" })} rounded-xs`}
+        >
+          <Twitter />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  :root #contact {
+    background-image: url("../../assets/okc-map-light.webp");
+  }
+  .dark #contact {
+    background-image: url("../../assets/okc-map-dark.webp");
+  }
+
+  #contact {
+    background-size: cover;
+    background-position: center;
+  }
+  #contact * {
+    z-index: 2;
+  }
+  #contact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.9;
+    background-color: var(--background);
+  }
+</style>
