@@ -8,22 +8,29 @@ import Contact from "@/components/sections/Contact.astro";
 
 // Define sections with their names and components
 const sections = [
-  { name: "Home", component: Home },
-  { name: "About", component: About },
-  { name: "Skills", component: Skills },
-  { name: "Projects", component: Projects },
-  { name: "Contact", component: Contact },
+  { name: "Home", description: "Welcome to my portfolio", component: Home },
+  { name: "About", description: "Get to know me", component: About },
+  { name: "Skills", description: "Check out my expertise", component: Skills },
+  {
+    name: "Projects",
+    description: "Showcasing my best work",
+    component: Projects,
+  },
+  { name: "Contact", description: "Let's get in touch", component: Contact },
 ];
 ---
 
 <PortfolioLayout pageTitle="Ashton G. Heald - Portfolio">
   {
-    sections.map(({ name, component: Section }, index) => (
+    sections.map(({ name, description, component: Section }, index) => (
       <section
         id={name.toLowerCase()}
         class="relative flex min-h-full flex-col px-4 pt-4 pb-6 md:p-8 xl:mt-0"
       >
-        {index !== 0 && <h2 class="text-4xl font-bold">{name}</h2>}
+        {index !== 0 && <h2 class="font-serif text-4xl font-bold">{name}</h2>}
+        {index !== 0 && (
+          <h3 class="mb-4 font-serif text-xl font-semibold">{description}</h3>
+        )}
         <Section />
       </section>
     ))
