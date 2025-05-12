@@ -8,6 +8,7 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 // Props
 const props = defineProps({
@@ -16,7 +17,7 @@ const props = defineProps({
   description: String,
   icon: String,
   isFeatured: Boolean,
-  hoverContent: String,
+  concepts: Array,
 });
 
 // Global reactive shared state
@@ -69,7 +70,7 @@ const iconComponent = computed(() => icons[props.icon] || icons["CircleSmall"]);
 
 <template>
   <Card
-    class="relative col-span-1 flex h-full w-full cursor-pointer flex-col overflow-hidden"
+    class="relative col-span-1 flex h-full min-h-[138px] w-full cursor-pointer flex-col overflow-hidden rounded-sm"
     :class="{ 'row-span-2': isFeatured, 'row-span-1': !isFeatured }"
     :data-key="id"
     @mouseenter="currentHoveredId = id"
@@ -88,17 +89,19 @@ const iconComponent = computed(() => icons[props.icon] || icons["CircleSmall"]);
       </CardHeader>
 
       <CardContent
-        class="bg-primary absolute inset-0 z-10 flex transform flex-col p-6 transition-transform duration-300 ease-in-out"
+        class="bg-primary absolute inset-0 z-10 flex transform flex-col p-3 transition-transform duration-300 ease-in-out"
         :class="{
           'translate-y-0': isHovered,
           'translate-y-full': !isHovered,
         }"
       >
-        <p class="text-primary-foreground">
-          <slot name="hover-content">
-            {{ hoverContent || "Hover content goes here" }}
-          </slot>
-        </p>
+        <ul class="flex flex-wrap gap-1">
+          <li v-for="concept in concepts" :key="concept">
+            <Badge variant="outline" class="text-background rounded-xs text-xs">
+              {{ concept }}</Badge
+            >
+          </li>
+        </ul>
       </CardContent>
     </div>
   </Card>

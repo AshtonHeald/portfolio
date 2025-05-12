@@ -25,6 +25,7 @@ const fallbackIcon = content.frontmatter.icon || "";
         description={skill.data.description}
         icon={skill.data.icon || fallbackIcon}
         isFeatured={index === 2}
+        concepts={skill.data.concepts}
       />
     ))
   }

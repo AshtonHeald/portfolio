@@ -1,6 +1,6 @@
 ---
 title: "Check out my expertise"
 
-skill1title: ""
+skilltitle: ""
 hobbies: ["Coding", "Gaming", "Learning", "Reading", "Writing"]
 ---
