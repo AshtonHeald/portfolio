@@ -21,6 +21,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectGroup,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 //import { toast } from "@/components/ui/toast/use-toast";
@@ -121,15 +122,15 @@ const { isFieldDirty, handleSubmit } = useForm({
         </FormField>
         <FormField
           v-slot="{ componentField }"
-          name="name"
+          name="message"
           :validate-on-blur="!isFieldDirty"
         >
           <FormItem>
-            <FormLabel>Name</FormLabel>
+            <FormLabel>Message</FormLabel>
             <FormControl>
-              <Input
-                type="text"
-                placeholder="Your Name"
+              <Textarea
+                placeholder="Message"
+                class="resize-none"
                 v-bind="componentField"
               />
             </FormControl>
