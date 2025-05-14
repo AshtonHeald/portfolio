@@ -137,7 +137,7 @@ const { isFieldDirty, handleSubmit } = useForm({
             <FormMessage />
           </FormItem>
         </FormField>
-        <Button type="submit" class="mt-4">Send Message</Button>
+        <Button type="submit" class="mt-4 w-full">Send Message</Button>
       </form>
     </CardContent>
   </Card>
