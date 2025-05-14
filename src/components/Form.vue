@@ -57,7 +57,7 @@ const { isFieldDirty, handleSubmit } = useForm({
 <template>
   <Card>
     <CardContent class="py-6">
-      <form class="space-y-2">
+      <form class="space-y-4">
         <FormField
           v-slot="{ componentField }"
           name="name"
@@ -137,7 +137,7 @@ const { isFieldDirty, handleSubmit } = useForm({
             <FormMessage />
           </FormItem>
         </FormField>
-        <Button type="submit" class="mt-4 w-full">Send Message</Button>
+        <Button type="submit" class="mt-2 w-full">Send Message</Button>
       </form>
     </CardContent>
   </Card>
