@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Theme from "../components/Theme.vue";
 import Sidebar from "../components/nav/Sidebar.astro";
 import Navbar from "../components/nav/Navbar.astro";
+import { Toaster } from "@/components/ui/sonner";
 import "@/styles/global.css";
 import "@fontsource-variable/inter";
 const { pageTitle } = Astro.props;
@@ -31,4 +32,5 @@ const { pageTitle } = Astro.props;
       </main>
     </div>
   </div>
+  <Toaster client:load />
 </BaseLayout>

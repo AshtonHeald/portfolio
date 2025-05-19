@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { Button } from "@/components/ui/button";
+import { ref } from "vue";
+import emailjs from "@emailjs/browser";
 import {
   FormControl,
   FormDescription,
@@ -9,12 +11,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -24,45 +21,79 @@ import {
   SelectGroup,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-//import { toast } from "@/components/ui/toast/use-toast";
+import { toast } from "vue-sonner";
+
+const SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
 
 import { toTypedSchema } from "@vee-validate/zod";
 import { useForm } from "vee-validate";
-import { h } from "vue";
+
 import * as z from "zod";
 
 const formSchema = toTypedSchema(
   z.object({
-    username: z.string().min(2).max(50),
+    name: z.string().min(1, "Name is required").max(50),
+    email: z
+      .string()
+      .min(1, "Email is required")
+      .email("Invalid email address"),
+    subject: z.string().min(1, "Please choose a subject"),
+    message: z.string().min(5, "Message must be at least 5 characters"),
   }),
 );
 
-const { isFieldDirty, handleSubmit } = useForm({
+const { handleSubmit, resetForm } = useForm({
   validationSchema: formSchema,
 });
 
-/* const onSubmit = handleSubmit((values) => {
-  toast({
-    title: "You submitted the following values:",
-    description: h(
-      "pre",
-      { class: "mt-2 w-[340px] rounded-md bg-slate-950 p-4" },
-      h("code", { class: "text-white" }, JSON.stringify(values, null, 2)),
-    ),
-  });
+const formRef = ref<HTMLFormElement | null>(null);
+const isSubmitting = ref(false);
+const lastSubmissionTime = ref<number | null>(null);
+const submissionInterval = 300000; // Minimum time (in milliseconds) between submissions
+
+const onSubmit = handleSubmit(async (values) => {
+  if (!formRef.value || isSubmitting.value) return;
+
+  const currentTime = Date.now();
+  if (
+    lastSubmissionTime.value &&
+    currentTime - lastSubmissionTime.value < submissionInterval
+  ) {
+    toast("Please wait a moment before sending another message.", {
+      duration: 1500,
+    });
+    return;
+  }
+
+  isSubmitting.value = true;
+
+  try {
+    await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.value, {
+      publicKey: PUBLIC_KEY,
+    });
+    toast("Message sent 🎉", {
+      description: `Thanks ${values.name}, we got your message.`,
+    });
+    resetForm();
+    lastSubmissionTime.value = currentTime;
+  } catch (error) {
+    toast("Something went wrong 😓", {
+      description: "Please try an alternative method.",
+    });
+    console.error("EmailJS failed", error);
+  } finally {
+    isSubmitting.value = false;
+  }
 });
-*/
 </script>
 
 <template>
   <Card>
     <CardContent class="py-6">
-      <form class="space-y-4">
-        <FormField
-          v-slot="{ componentField }"
-          name="name"
-          :validate-on-blur="!isFieldDirty"
-        >
+      <form ref="formRef" class="space-y-4" @submit="onSubmit">
+        <FormField v-slot="{ componentField }" name="name">
           <FormItem>
             <FormLabel>Name</FormLabel>
             <FormControl>
@@ -75,11 +106,7 @@ const { isFieldDirty, handleSubmit } = useForm({
             <FormMessage />
           </FormItem>
         </FormField>
-        <FormField
-          v-slot="{ componentField }"
-          name="email"
-          :validate-on-blur="!isFieldDirty"
-        >
+        <FormField v-slot="{ componentField }" name="email">
           <FormItem>
             <FormLabel>Email</FormLabel>
             <FormControl>
@@ -92,15 +119,11 @@ const { isFieldDirty, handleSubmit } = useForm({
             <FormMessage />
           </FormItem>
         </FormField>
-        <FormField
-          v-slot="{ componentField }"
-          name="sibject"
-          :validate-on-blur="!isFieldDirty"
-        >
+        <FormField v-slot="{ componentField }" name="subject">
           <FormItem>
             <FormLabel>Subject</FormLabel>
             <FormControl>
-              <Select>
+              <Select v-bind="componentField">
                 <SelectTrigger>
                   <SelectValue placeholder="Choose a subject" />
                 </SelectTrigger>
@@ -120,11 +143,7 @@ const { isFieldDirty, handleSubmit } = useForm({
             <FormMessage />
           </FormItem>
         </FormField>
-        <FormField
-          v-slot="{ componentField }"
-          name="message"
-          :validate-on-blur="!isFieldDirty"
-        >
+        <FormField v-slot="{ componentField }" name="message">
           <FormItem>
             <FormLabel>Message</FormLabel>
             <FormControl>
