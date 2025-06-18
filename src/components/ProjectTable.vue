@@ -30,7 +30,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Table>
+  <Table class="mx-auto max-w-[500px] lg:max-w-full">
     <TableBody>
       <Dialog v-for="(project, index) in props.projects" :key="project.title">
         <DialogTrigger as-child>
