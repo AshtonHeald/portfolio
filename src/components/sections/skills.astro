@@ -1,9 +1,9 @@
 ---
 import * as content from "@/content/skills.md";
 import SkillCard from "@/components/SkillCard.vue";
+import SkillAccordion from "@/components/SkillAccordion.vue";
 
 const skills = content.frontmatter.skills;
-const fallbackIcon = "CircleSmall"; // Safe fallback icon from lucide
 
 type Skill = {
   title: string;
@@ -13,20 +13,25 @@ type Skill = {
 };
 ---
 
-<div
-  class="flex grid-cols-1 grid-rows-3 flex-wrap justify-center gap-4 sm:grid-cols-2 lg:grid lg:grid-cols-3"
->
-  {
-    skills.map((skill: Skill, index: number) => (
-      <SkillCard
-        client:visible
-        id={`skill-${index}`}
-        title={skill.title}
-        description={skill.description}
-        icon={skill.icon || fallbackIcon}
-        isFeatured={index === 2 || index === 3}
-        concepts={skill.concepts}
-      />
-    ))
-  }
+<div class="">
+  <div class="mx-auto w-full max-w-[500px] md:hidden">
+    <SkillAccordion client:load skills={skills} />
+  </div>
+  <div
+    class="hidden flex-wrap justify-center gap-4 md:flex md:grid-cols-2 lg:grid lg:grid-cols-3"
+  >
+    {
+      skills.map((skill: Skill, index: number) => (
+        <SkillCard
+          client:visible
+          id={`skill-${index}`}
+          title={skill.title}
+          description={skill.description}
+          icon={skill.icon}
+          isFeatured={index === 2 || index === 3}
+          concepts={skill.concepts}
+        />
+      ))
+    }
+  </div>
 </div>
