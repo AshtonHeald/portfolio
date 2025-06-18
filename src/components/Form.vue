@@ -73,13 +73,13 @@ const onSubmit = handleSubmit(async (values) => {
     await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.value, {
       publicKey: PUBLIC_KEY,
     });
-    toast("Message sent 🎉", {
-      description: `Thanks ${values.name}, we got your message.`,
+    toast("Message sent!", {
+      description: `Thanks ${values.name}, I got your message.`,
     });
     resetForm();
     lastSubmissionTime.value = currentTime;
   } catch (error) {
-    toast("Something went wrong 😓", {
+    toast("Something went wrong..", {
       description: "Please try an alternative method.",
     });
     console.error("EmailJS failed", error);

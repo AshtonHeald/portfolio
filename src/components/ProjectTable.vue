@@ -32,10 +32,10 @@ const props = defineProps<{
 <template>
   <Table class="mx-auto max-w-[500px] lg:max-w-full">
     <TableBody>
-      <Dialog v-for="(project, index) in props.projects" :key="project.title">
-        <DialogTrigger as-child>
-          <TableRow>
-            <TableCell class="w-[56.5px] font-medium">
+      <TableRow v-for="(project, index) in props.projects" :key="project.title">
+        <Dialog>
+          <DialogTrigger class="block w-full">
+            <TableCell class="h-[56.6px] w-[56.5px] text-left font-medium">
               {{ String(index + 1).padStart(2, "0") }}
             </TableCell>
             <TableCell>
@@ -46,41 +46,41 @@ const props = defineProps<{
                 <span>{{ project.year }}</span>
               </div>
             </TableCell>
-            <TableCell class="text-right">
+            <TableCell class="w-full text-right">
               <MoveRight :size="16" class="inline" />
             </TableCell>
-          </TableRow>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>{{ project.title }}</DialogTitle>
-          </DialogHeader>
-          <img
-            class="aspect-video object-cover"
-            :src="project.cover.src"
-            :alt="project.cover.alt"
-            width="1600px"
-            height="900px"
-          />
-          <p className="text-sm text-muted-foreground">
-            {{ project.description }}
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <Badge
-              v-for="(tech, index) in project.techstack"
-              :key="index"
-              variant="outline"
-              class="rounded-xs"
-            >
-              {{ tech }}
-            </Badge>
-          </div>
-          <DialogFooter>
-            <Button> <Github class="h-4 w-4" /> View Code </Button>
-            <Button> <MonitorSmartphone class="h-4 w-4" /> Live Demo</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{{ project.title }}</DialogTitle>
+            </DialogHeader>
+            <img
+              class="aspect-video w-full object-cover"
+              :src="project.cover.src"
+              :alt="project.cover.alt"
+              width="1600px"
+              height="900px"
+            />
+            <p className="text-sm text-muted-foreground">
+              {{ project.description }}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <Badge
+                v-for="(tech, index) in project.techstack"
+                :key="index"
+                variant="outline"
+                class="rounded-xs"
+              >
+                {{ tech }}
+              </Badge>
+            </div>
+            <DialogFooter>
+              <Button> <Github class="h-4 w-4" /> View Code </Button>
+              <Button> <MonitorSmartphone class="h-4 w-4" /> Live Demo</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </TableRow>
     </TableBody>
   </Table>
 </template>

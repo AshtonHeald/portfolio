@@ -2,6 +2,7 @@
 import TypeWriter from "@/components/TypeWriter.jsx";
 import * as content from "@/content/portfolio.md";
 const { hero } = content.frontmatter;
+import { ChevronDown } from "@lucide/astro";
 
 const textSequence = hero.typewriterStrings
   .map((text: string) => [text, 3000])
@@ -23,6 +24,12 @@ const textSequence = hero.typewriterStrings
     </span>
   </span>
 </div>
+<a
+  href="#about"
+  class="absolute bottom-4 left-1/2 -translate-x-1/2 motion-safe:animate-bounce"
+>
+  <ChevronDown class="text-muted-foreground h-6 w-6" />
+</a>
 
 <style scoped>
   .name {
