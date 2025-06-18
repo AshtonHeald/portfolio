@@ -6,12 +6,14 @@ import Form from "@/components/Form.vue";
 ---
 
 <div
-  class="mx-auto flex max-w-[500px] flex-col gap-6 lg:max-w-full lg:flex-row-reverse"
+  class="mx-auto flex max-w-[500px] flex-col gap-6 lg:max-w-full lg:flex-row"
 >
-  <div class="flex flex-col items-center gap-4 lg:w-5/12">
-    <div class="flex flex-col items-center">
+  <div
+    class="flex flex-col items-center gap-2 lg:w-6/12 lg:items-start lg:gap-4"
+  >
+    <div class="flex flex-col items-center lg:items-start">
       <h4 class="font-sans font-bold">Contact Information</h4>
-      <p class="mb-3 text-center text-sm">
+      <p class="mb-3 text-center text-sm lg:text-left">
         Feel free to reach out to me directly or through the form. I'll get back
         to you as soon as possible.
       </p>
@@ -38,7 +40,7 @@ import Form from "@/components/Form.vue";
       </div>
     </div>
   </div>
-  <div class="lg:w-7/12">
+  <div class="lg:w-6/12">
     <Form client:load />
   </div>
 </div>

@@ -7,6 +7,8 @@ import { Toaster } from "@/components/ui/sonner";
 import "@/styles/global.css";
 import "@fontsource-variable/inter";
 import { cn } from "@/lib/utils";
+
+const currentYear = new Date().getFullYear();
 ---
 
 <BaseLayout pageTitle="Ashton G. Heald - Developer Portfolio">
@@ -44,6 +46,9 @@ import { cn } from "@/lib/utils";
         class="[&::-webkit-scrollbar-thumb]:[--border] mt-13 h-full w-full overflow-y-auto xl:mt-0 xl:ml-64 xl:h-[620px] xl:w-[calc(100%-256px)] [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:border-4 [&::-webkit-scrollbar-thumb]:border-transparent [&::-webkit-scrollbar-thumb]:bg-[var(--border)] [&::-webkit-scrollbar-thumb]:bg-clip-content [&::-webkit-scrollbar-track]:rounded-full"
       >
         <slot />
+        <footer class="text-muted-foreground p-4 text-center text-xs">
+          © {currentYear} Ash — All rights reserved
+        </footer>
       </main>
     </div>
   </div>
