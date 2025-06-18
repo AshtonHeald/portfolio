@@ -25,7 +25,7 @@ const sections = [
     sections.map(({ name, description, component: Section }, index) => (
       <section
         id={name.toLowerCase()}
-        class={`relative flex xl:min-h-full ${index === 0 ? "min-h-full" : ""} p-4 md:p-8 ${index !== 0 ? "!pb-12 md:!pb-24 xl:!pb-8" : ""} mx-auto w-full max-w-[872px] flex-col xl:mx-0`}
+        class={`relative flex xl:min-h-full ${index === 0 ? "min-h-full" : ""} p-4 md:p-8 ${index !== 0 ? "!pb-12 md:!pb-24 xl:!pb-8" : ""} mx-auto w-full max-w-[872px] flex-col xl:mx-0 xl:max-w-full`}
       >
         {index !== 0 && (
           <h2 class="text-center font-serif text-3xl font-bold lg:text-4xl xl:text-left">
