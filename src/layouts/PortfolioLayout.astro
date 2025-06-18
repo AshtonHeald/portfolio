@@ -6,12 +6,27 @@ import Navbar from "../components/nav/Navbar.astro";
 import { Toaster } from "@/components/ui/sonner";
 import "@/styles/global.css";
 import "@fontsource-variable/inter";
-const { pageTitle } = Astro.props;
+import { cn } from "@/lib/utils";
 ---
 
 <BaseLayout pageTitle="Ashton G. Heald - Developer Portfolio">
   <div
-    class="browser-box bg-background absolute h-[calc(100dvh-60px)] w-full xl:h-[675px] xl:max-w-[1200px] xl:rounded-sm xl:border"
+    class={cn(
+      "xl:absolute inset-0",
+      "[background-size:32px_32px]",
+      "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
+      "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
+    )}
+  >
+  </div>
+  {/* Radial gradient for the container to give a faded look */}
+  <div
+    class="pointer-events-none absolute inset-0 hidden items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_75%,black)] xl:flex dark:bg-black"
+  >
+  </div>
+  <!-- h-[calc(100dvh-60px)] -->
+  <div
+    class="browser-box bg-background absolute h-[calc(100dvh-52px)] w-full xl:h-[675px] xl:max-w-[1200px] xl:rounded-sm xl:border"
   >
     <div
       class="browser-toolbar bg-background fixed top-0 z-10 inline-flex h-[52px] w-full items-center justify-between rounded-t-sm border-b px-2 xl:relative xl:top-auto xl:border-0 xl:pl-0"

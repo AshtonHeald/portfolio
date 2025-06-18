@@ -1,8 +1,9 @@
 ---
-import { getCollection } from "astro:content";
-const projects = await getCollection("projects");
-import order from "@/data/project-order.ts";
+import * as content from "@/content/projects.md";
+
 import ProjectTable from "@/components/ProjectTable.vue";
+
+const { projects } = content.frontmatter;
 ---
 
-<ProjectTable projects={projects} order={order} client:load />
+<ProjectTable projects={projects} client:load />

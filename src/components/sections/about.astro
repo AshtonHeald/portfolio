@@ -1,66 +1,57 @@
 ---
-import * as content from "@/content/sections/about.md";
-import { Content as Body } from "@/content/sections/about.md";
 import Info from "@/components/Info.astro";
 import { badgeVariants } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import ModelFull from "@/components/ModelFull.tsx";
-
+import ModelFull from "@/components/Model.vue";
 import { FileUser, Heart, Shapes, MapPin, SquarePen } from "@lucide/astro";
+
+import * as content from "@/content/portfolio.md";
+import { Content as Prose } from "@/content/portfolio.md";
+
+const { about } = content.frontmatter;
 ---
 
-<div class="flex">
-  <article class="w-3/5">
-    <div class="mb-5 border-b pb-5">
-      <h4 class="font-sans font-bold">{content.frontmatter.subtitle}</h4>
+<div class="flex justify-center lg:justify-start">
+  <article class="max-w-[500px] lg:w-3/5">
+    <div class="mb-5 border-b pb-5 text-center lg:text-left">
+      <h4 class="font-sans font-bold">{about.subtitle}</h4>
       <p>
-        {content.frontmatter.introduction}
-
-        <Body />
+        <Prose />
       </p>
     </div>
     <div class="info-wrapper mb-5 grid gap-3 leading-4">
-      <Info icon={MapPin}>{content.frontmatter.location}</Info>
+      <Info icon={MapPin}>{about.location}</Info>
       <Info>
         <SquarePen class="h-5 w-5" />
-        <a href=`https://${content.frontmatter.blog}` class="!underline"
+        <a href=`https://${about.blog}` class="!underline"
           >Thoughts & Tutorials</a
         >
       </Info>
 
-      <Info>
-        <Heart class="h-5 w-5" />
-        <ul class="flex gap-1">
-          {
-            content.frontmatter.interests.map((interest: string) => (
-              <li class={`${badgeVariants({ variant: "outline" })} rounded-xs`}>
-                {interest}
-              </li>
-            ))
-          }
-        </ul>
-      </Info>
-      <Info>
-        <Shapes class="h-5 w-5" />
-        <ul class="flex gap-1">
-          {
-            content.frontmatter.hobbies.map((hobby: string) => (
-              <li class={`${badgeVariants({ variant: "outline" })} rounded-xs`}>
-                {hobby}
-              </li>
-            ))
-          }
-        </ul>
-      </Info>
+      <div>
+        <Info>
+          <Shapes class="h-5 w-5 min-w-5" />
+          <span class="mb-4">Interests & Hobbies:</span>
+        </Info>
+        <div>
+          <ul class="flex flex-wrap justify-center gap-1 lg:justify-start">
+            {
+              about.interestsHobbies.map((interestHobbies: string) => (
+                <li
+                  class={`${badgeVariants({ variant: "outline" })} rounded-xs`}
+                >
+                  {interestHobbies}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
     </div>
-
-    <a href="" class={`${buttonVariants({ variant: "default" })} rounded-xs`}>
-      <FileUser class="h-5 w-5" />
-      View Resume</a
-    >
   </article>
-
-  <div>
+  <!-- 
+  <div class="hidden lg:block">
     <ModelFull client:load />
   </div>
+  -->
 </div>

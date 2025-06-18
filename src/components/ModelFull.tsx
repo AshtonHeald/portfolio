@@ -1,4 +1,4 @@
-"use client";
+/*"use client";
 
 import { Suspense, useRef, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
@@ -53,7 +53,7 @@ export default function PlayerModelViewer() {
     <Canvas shadows style={{ height: "100%" }}>
       <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={45} />
 
-      {/* Lighting */}
+      {/* Lighting }
       <ambientLight intensity={0.05} />
       <directionalLight
         position={[10, 10, 5]}
@@ -64,7 +64,7 @@ export default function PlayerModelViewer() {
       />
       <directionalLight position={[-10, -10, -5]} intensity={0.05} />
 
-      {/* Environment and model */}
+      {/* Environment and model }
       <Environment preset="studio" />
       <Suspense fallback={<LoadingSpinner />}>
         <PlayerModel />
@@ -78,7 +78,7 @@ export default function PlayerModelViewer() {
         />
       </Suspense>
 
-      {/* Controls - modified to only allow X-axis rotation */}
+      {/* Controls - modified to only allow X-axis rotation }
       <OrbitControls
         enablePan={false}
         enableZoom={false}
@@ -89,3 +89,5 @@ export default function PlayerModelViewer() {
     </Canvas>
   );
 }
+
+*/

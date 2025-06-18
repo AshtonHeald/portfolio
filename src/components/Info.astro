@@ -3,7 +3,7 @@
 const { icon: Icon } = Astro.props;
 ---
 
-<div class="flex flex-wrap items-center gap-1">
+<div class="flex justify-center gap-1 lg:justify-start">
   {Icon && <Icon class="h-5 w-5" />}
   <slot />
 </div>

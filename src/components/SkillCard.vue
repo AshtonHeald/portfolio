@@ -70,7 +70,7 @@ const iconComponent = computed(() => icons[props.icon] || icons["CircleSmall"]);
 
 <template>
   <Card
-    class="relative col-span-1 flex h-full min-h-[138px] w-full cursor-pointer flex-col overflow-hidden rounded-sm"
+    class="relative col-span-1 flex h-full min-h-[140px] w-full max-w-[280px] cursor-pointer flex-col overflow-hidden rounded-sm"
     :class="{ 'row-span-2': isFeatured, 'row-span-1': !isFeatured }"
     :data-key="id"
     @mouseenter="currentHoveredId = id"
@@ -80,7 +80,9 @@ const iconComponent = computed(() => icons[props.icon] || icons["CircleSmall"]);
   >
     <!-- Use a div inside to capture the real DOM element -->
     <div ref="cardRef" class="contents">
-      <CardHeader class="h-full grid-rows-[inherit] px-6 py-8">
+      <CardHeader
+        class="flex h-full grid-rows-[inherit] flex-col items-center justify-center px-6 py-8 text-center"
+      >
         <div class="flex items-center gap-1">
           <component :is="iconComponent" class="h-5 w-5" />
           <CardTitle>{{ title }}</CardTitle>
@@ -89,7 +91,7 @@ const iconComponent = computed(() => icons[props.icon] || icons["CircleSmall"]);
       </CardHeader>
 
       <CardContent
-        class="bg-primary absolute inset-0 z-10 flex transform flex-col p-3 transition-transform duration-300 ease-in-out"
+        class="bg-background absolute inset-0 z-10 flex transform flex-col border-t-4 p-3 transition-transform duration-300 ease-in-out"
         :class="{
           'translate-y-0': isHovered,
           'translate-y-full': !isHovered,
@@ -97,7 +99,7 @@ const iconComponent = computed(() => icons[props.icon] || icons["CircleSmall"]);
       >
         <ul class="flex flex-wrap gap-1">
           <li v-for="concept in concepts" :key="concept">
-            <Badge variant="outline" class="text-background rounded-xs text-xs">
+            <Badge variant="outline" class="rounded-xs text-xs">
               {{ concept }}</Badge
             >
           </li>

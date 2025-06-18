@@ -9,5 +9,10 @@ interests:
   - "Philosophy"
   - "Cognitive Science"
   - "The Arts"
-hobbies: ["Coding", "Gaming", "Learning", "Reading", "Writing"]
+hobbies:
+  - "Coding"
+  - "Gaming"
+  - "Learning"
+  - "Reading"
+  - "Writing"
 ---

@@ -2,8 +2,12 @@
 title: "JavaScript Ecosystem"
 description: "This is javascript ecosystem"
 concepts:
-  - "Concept 1"
-  - "Concept 2"
+  - "Core JavaScript (ES6+)"
+  - "TypeScript"
+  - "State management"
+  - "Libraries & Frameworks"
+  - "Testing"
+  - "Build Tools"
 icon: "Code"
 ---
 

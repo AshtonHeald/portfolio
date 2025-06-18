@@ -5,28 +5,27 @@ import { Github, Linkedin, Twitter, Mail } from "@lucide/astro";
 import Form from "@/components/Form.vue";
 ---
 
-<div class="flex flex-col gap-6 md:flex-row">
-  <div class="md:w-7/12">
-    <Form client:load />
-  </div>
-  <div class="flex flex-col justify-between gap-4 md:w-5/12">
-    <div>
+<div
+  class="mx-auto flex max-w-[500px] flex-col gap-6 lg:max-w-full lg:flex-row-reverse"
+>
+  <div class="flex flex-col items-center gap-4 lg:w-5/12">
+    <div class="flex flex-col items-center">
       <h4 class="font-sans font-bold">Contact Information</h4>
-      <p class="mb-3 text-sm">
+      <p class="mb-3 text-center text-sm">
         Feel free to reach out to me directly or through the form. I'll get back
         to you as soon as possible.
       </p>
       <a
         href=""
-        class={`${buttonVariants({ variant: "default" })} rounded-xs align-items-end`}
+        class={`${buttonVariants({ variant: "default" })} rounded-xs align-items-end mb-3`}
       >
         <Mail />
         <span> contact@ashtonheald.me </span>
       </a>
     </div>
-    <div class="mb-6">
+    <div>
       <h4 class="mb-2 font-sans font-bold">Connect With Me</h4>
-      <div class="flex gap-2">
+      <div class="flex gap-3">
         <a href="" class={`${buttonVariants({ size: "icon" })} rounded-xs`}>
           <Github />
         </a>
@@ -39,32 +38,36 @@ import Form from "@/components/Form.vue";
       </div>
     </div>
   </div>
+  <div class="lg:w-7/12">
+    <Form client:load />
+  </div>
 </div>
 
 <style is:global>
-  :root #contact {
-    background-image: url("/images/okc-map-light.webp");
-  }
-  .dark #contact {
-    background-image: url("/images/okc-map-dark.webp");
-  }
-
-  #contact {
-    background-size: cover;
-    background-position: center;
-  }
-  #contact * {
-    z-index: 2;
-  }
-  #contact::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.9;
-    background-color: var(--background);
-    border-bottom-right-radius: var(--radius-md);
+  @media (width >= 80rem) {
+    :root #contact {
+      background-image: url("/images/okc-map-light.webp");
+    }
+    .dark #contact {
+      background-image: url("/images/okc-map-dark.webp");
+    }
+    #contact {
+      background-size: cover;
+      background-position: center;
+    }
+    #contact * {
+      z-index: 2;
+    }
+    #contact::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.9;
+      background-color: var(--background);
+      border-bottom-right-radius: var(--radius-md);
+    }
   }
 </style>

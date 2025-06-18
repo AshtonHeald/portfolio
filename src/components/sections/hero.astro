@@ -1,8 +1,9 @@
 ---
-import * as content from "@/content/sections/hero.md";
 import TypeWriter from "@/components/TypeWriter.jsx";
+import * as content from "@/content/portfolio.md";
+const { hero } = content.frontmatter;
 
-const textSequence = content.frontmatter.typewriterStrings
+const textSequence = hero.typewriterStrings
   .map((text: string) => [text, 3000])
   .flat();
 ---

@@ -1,27 +1,31 @@
 ---
-import * as content from "@/content/sections/skills.md";
-import { getCollection } from "astro:content";
-
+import * as content from "@/content/skills.md";
 import SkillCard from "@/components/SkillCard.vue";
 
-const skills = (await getCollection("skills")).sort((a, b) =>
-  a.id.localeCompare(b.id),
-);
+const skills = content.frontmatter.skills;
+const fallbackIcon = "CircleSmall"; // Safe fallback icon from lucide
 
-const fallbackIcon = content.frontmatter.icon || "";
+type Skill = {
+  title: string;
+  description: string;
+  concepts: string[];
+  icon?: string;
+};
 ---
 
-<div class="grid grid-cols-3 grid-rows-3 gap-4">
+<div
+  class="flex grid-cols-1 grid-rows-3 flex-wrap justify-center gap-4 sm:grid-cols-2 lg:grid lg:grid-cols-3"
+>
   {
-    skills.map((skill, index) => (
+    skills.map((skill: Skill, index: number) => (
       <SkillCard
         client:visible
-        id={skill.id}
-        title={skill.data.title}
-        description={skill.data.description}
-        icon={skill.data.icon || fallbackIcon}
-        isFeatured={index === 2}
-        concepts={skill.data.concepts}
+        id={`skill-${index}`}
+        title={skill.title}
+        description={skill.description}
+        icon={skill.icon || fallbackIcon}
+        isFeatured={index === 2 || index === 3}
+        concepts={skill.concepts}
       />
     ))
   }
