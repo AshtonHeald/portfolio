@@ -66,10 +66,24 @@ onBeforeUnmount(() => {
 
 // Icon
 const iconComponent = computed(() => icons[props.icon] || icons["CircleSmall"]);
+
+function handleKeydown(event) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault(); // Prevent page scroll on space
+    if (currentHoveredId.value === props.id) {
+      currentHoveredId.value = null;
+    } else {
+      currentHoveredId.value = props.id;
+    }
+  }
+}
 </script>
 
 <template>
   <Card
+    tabindex="0"
+    role="button"
+    :aria-pressed="isHovered.toString()"
     class="relative col-span-1 flex h-full min-h-[140px] w-full max-w-[280px] cursor-pointer flex-col overflow-hidden rounded-sm"
     :class="{ 'row-span-2': isFeatured, 'row-span-1': !isFeatured }"
     :data-key="id"
@@ -77,6 +91,7 @@ const iconComponent = computed(() => icons[props.icon] || icons["CircleSmall"]);
     @mouseleave="currentHoveredId = null"
     @touchstart="handleTouchStart"
     @touchend="handleTouchEnd"
+    @keydown="handleKeydown"
   >
     <!-- Use a div inside to capture the real DOM element -->
     <div ref="cardRef" class="contents">
@@ -108,3 +123,5 @@ const iconComponent = computed(() => icons[props.icon] || icons["CircleSmall"]);
     </div>
   </Card>
 </template>
+
+<style></style>

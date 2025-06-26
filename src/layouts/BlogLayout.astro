@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Theme from "../components/Theme.vue";
+import { Toaster } from "@/components/ui/sonner";
+import "@/styles/global.css";
+import "@fontsource-variable/inter";
+import { cn } from "@/lib/utils";
+
+const currentYear = new Date().getFullYear();
+---
+
+<BaseLayout pageTitle="Ashton G. Heald - Developer Portfolio">
+  <main>
+    <slot />
+    <footer class="text-muted-foreground p-4 text-center text-xs">
+      © {currentYear} Ash — All rights reserved
+    </footer>
+  </main>
+  <Toaster client:load />
+</BaseLayout>

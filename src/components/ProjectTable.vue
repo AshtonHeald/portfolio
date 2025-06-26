@@ -29,17 +29,19 @@ const props = defineProps<{
 }>();
 </script>
 
+<!-- TODO: Add project filtering -->
+
 <template>
   <Table class="mx-auto max-w-[500px] lg:max-w-full">
     <TableBody>
       <TableRow v-for="(project, index) in props.projects" :key="project.title">
         <Dialog>
           <DialogTrigger class="block w-full">
-            <TableCell class="h-[56.6px] w-[56.5px] text-left font-medium">
+            <TableCell class="min-w-[56.5px] text-left font-medium">
               {{ String(index + 1).padStart(2, "0") }}
             </TableCell>
             <TableCell>
-              <div class="font-semibold">{{ project.title }}</div>
+              <div class="text-left font-semibold">{{ project.title }}</div>
               <div class="text-muted-foreground flex items-center text-xs">
                 <span>{{ project.featured }}</span>
                 <Dot :size="20" />

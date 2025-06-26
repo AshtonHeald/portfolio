@@ -54,3 +54,19 @@ const currentYear = new Date().getFullYear();
   </div>
   <Toaster client:load />
 </BaseLayout>
+
+<style>
+  @media (min-width: 1280px) {
+    .browser-box .browser-toolbar:before {
+      content: "";
+      aspect-ratio: 1 / 1;
+      height: 0.75rem;
+      border-radius: 9999px;
+      opacity: 0.3;
+      box-shadow:
+        1.4em 0,
+        2.8em 0,
+        4.2em 0;
+    }
+  }
+</style>

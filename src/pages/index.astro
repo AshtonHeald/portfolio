@@ -1,44 +1,255 @@
 ---
 import PortfolioLayout from "@/layouts/PortfolioLayout.astro";
-import Home from "@/components/sections/Hero.astro";
-import About from "@/components/sections/About.astro";
-import Skills from "@/components/sections/Skills.astro";
-import Projects from "@/components/sections/Projects.astro";
-import Contact from "@/components/sections/Contact.astro";
 
-// Define sections with their names and components
-const sections = [
-  { name: "Home", description: "Welcome to my portfolio", component: Home },
-  { name: "About", description: "Get to know me", component: About },
-  { name: "Skills", description: "Check out my expertise", component: Skills },
-  {
-    name: "Projects",
-    description: "Showcasing my best work",
-    component: Projects,
-  },
-  { name: "Contact", description: "Let's get in touch", component: Contact },
-];
+import Info from "@/components/Info.astro";
+import { badgeVariants } from "@/components/ui/badge";
+
+import Section from "@/components/Section.astro";
+
+import * as content from "@/content/portfolio.md";
+const {
+  hero,
+  about,
+  skills: skillsMeta,
+  projects: projectsMeta,
+  contact,
+} = content.frontmatter;
+import * as skillsContent from "@/content/skills.md";
+const skills = skillsContent.frontmatter.skills;
+import * as projectsContent from "@/content/projects.md";
+const projects = projectsContent.frontmatter.projects;
+
+import TypeWriter from "@/components/TypeWriter.jsx";
+
+const textSequence = hero.typewriterStrings
+  .map((text: string) => [text, 3000])
+  .flat();
+
+import { Shapes, MapPin, SquarePen, ChevronDown } from "@lucide/astro";
+
+import { Content as Prose } from "@/content/portfolio.md";
+
+import SkillCard from "@/components/SkillCard.vue";
+import SkillAccordion from "@/components/SkillAccordion.vue";
+
+type Skill = {
+  title: string;
+  description: string;
+  concepts: string[];
+  icon?: string;
+};
+
+import ProjectTable from "@/components/ProjectTable.vue";
+
+import { buttonVariants } from "@/components/ui/button";
+import { Github, Linkedin, Twitter, Mail } from "@lucide/astro";
+import Form from "@/components/Form.vue";
 ---
 
 <PortfolioLayout pageTitle="Ashton G. Heald - Portfolio">
-  {
-    sections.map(({ name, description, component: Section }, index) => (
-      <section
-        id={name.toLowerCase()}
-        class={`relative flex xl:min-h-full ${index === 0 ? "min-h-full" : ""} p-4 md:p-8 ${index !== 0 ? "!pb-12 md:!pb-24 xl:!pb-8" : ""} mx-auto w-full max-w-[872px] flex-col xl:mx-0 xl:max-w-full`}
+  <!-- Hero Section  -->
+  <Section id={hero.title.toLowerCase()} className="!md:pb-8 !min-h-full !pb-4">
+    <div class="z-10 mb-32 grid place-items-center text-center">
+      <h1
+        class="mb-2 text-center font-serif text-[2.5rem] !font-black md:mb-8 md:text-6xl lg:mb-8 lg:text-7xl"
       >
-        {index !== 0 && (
-          <h2 class="text-center font-serif text-3xl font-bold lg:text-4xl xl:text-left">
-            {name}
-          </h2>
-        )}
-        {index !== 0 && (
-          <h3 class="mb-4 text-center font-serif text-lg font-semibold lg:text-xl xl:text-left">
-            {description}
-          </h3>
-        )}
-        <Section />
-      </section>
-    ))
-  }
+        <span class="name">Ash</span>ton G. Heald
+      </h1>
+      <span
+        class="flex gap-1.5 text-center !font-serif text-[1.5rem] font-bold md:text-3xl lg:text-4xl"
+      >
+        <span> I'm a </span>
+        <span class="bg-primary text-secondary">
+          <TypeWriter textSequence={textSequence} client:load />
+        </span>
+      </span>
+    </div>
+    <a
+      href="#about"
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 motion-safe:animate-bounce"
+    >
+      <ChevronDown class="text-muted-foreground h-6 w-6" />
+    </a>
+  </Section>
+  <!-- About Section  -->
+  <Section
+    id={about.title.toLowerCase()}
+    title={about.title}
+    description={about.description}
+  >
+    <div class="flex justify-center lg:justify-start">
+      <article class="max-w-[500px] lg:w-3/5">
+        <div class="mb-5 border-b pb-5 text-center lg:text-left">
+          <h4 class="font-sans font-bold">{about.subtitle}</h4>
+          <p>
+            <Prose />
+          </p>
+        </div>
+        <div class="info-wrapper mb-5 grid gap-3 leading-4">
+          <Info icon={MapPin}>{about.location}</Info>
+          <Info>
+            <SquarePen class="h-5 w-5" />
+            <a href=`https://${about.blog}` class="!underline"
+              >Thoughts & Tutorials</a
+            >
+          </Info>
+
+          <div>
+            <Info>
+              <Shapes class="h-5 w-5 min-w-5" />
+              <span class="mb-4">Interests & Hobbies:</span>
+            </Info>
+            <div>
+              <ul class="flex flex-wrap justify-center gap-1 lg:justify-start">
+                {
+                  about.interestsHobbies.map((interestHobbies: string) => (
+                    <li
+                      class={`${badgeVariants({ variant: "outline" })} rounded-xs`}
+                    >
+                      {interestHobbies}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+      <div>
+        <img
+          src="/images/Ashton_Heald_Model.png"
+          alt="Ash's profile picture"
+          class="mx-auto h-[350px]"
+        />
+      </div>
+      <!-- 
+  <div class="hidden lg:block">
+    <ModelFull client:load />
+  </div>
+  -->
+    </div>
+  </Section>
+  <!-- Skills Section  -->
+  <Section
+    id={skillsMeta.title.toLowerCase()}
+    title={skillsMeta.title}
+    description={skillsMeta.description}
+  >
+    <div class="">
+      <div class="mx-auto w-full max-w-[500px] md:hidden">
+        <SkillAccordion client:visible skills={skills} />
+      </div>
+      <div
+        class="hidden flex-wrap justify-center gap-4 md:flex md:grid-cols-2 lg:grid lg:grid-cols-3"
+      >
+        {
+          skills.map((skill: Skill, index: number) => (
+            <SkillCard
+              client:visible
+              id={`skill-${index}`}
+              title={skill.title}
+              description={skill.description}
+              icon={skill.icon}
+              isFeatured={index === 2 || index === 3}
+              concepts={skill.concepts}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+  <!-- Projects Section  -->
+  <Section
+    id={projectsMeta.title.toLowerCase()}
+    title={projectsMeta.title}
+    description={projectsMeta.description}
+  >
+    <ProjectTable projects={projects} client:only="vue" />
+  </Section>
+  <!-- Contact Section  -->
+  <Section
+    id={contact.title.toLowerCase()}
+    title={contact.title}
+    description={contact.description}
+  >
+    <div
+      class="mx-auto flex max-w-[500px] flex-col gap-6 lg:max-w-full lg:flex-row"
+    >
+      <div
+        class="flex flex-col items-center gap-2 lg:w-6/12 lg:items-start lg:gap-4"
+      >
+        <div class="flex flex-col items-center lg:items-start">
+          <h4 class="font-sans font-bold">{contact.subtitle}</h4>
+          <p class="mb-3 text-center text-sm lg:text-left">
+            {contact.subDescription}
+          </p>
+          <a
+            href=""
+            class={`${buttonVariants({ variant: "default" })} rounded-xs align-items-end mb-3`}
+          >
+            <Mail />
+            <span>{contact.email}</span>
+          </a>
+        </div>
+        <div>
+          <h4 class="mb-2 font-sans font-bold">{contact.socialTitle}</h4>
+          <div class="flex gap-3">
+            <a href="" class={`${buttonVariants({ size: "icon" })} rounded-xs`}>
+              <Github />
+            </a>
+            <a href="" class={`${buttonVariants({ size: "icon" })} rounded-xs`}>
+              <Linkedin />
+            </a>
+            <a href="" class={`${buttonVariants({ size: "icon" })} rounded-xs`}>
+              <Twitter />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="lg:w-6/12">
+        <Form client:only="vue" />
+      </div>
+    </div>
+  </Section>
 </PortfolioLayout>
+
+<style is:global>
+  #home {
+    display: grid;
+    place-items: center;
+  }
+  .name {
+    -webkit-text-stroke: 1px var(--foreground);
+    text-stroke: 1px var(--foreground);
+    color: var(--background);
+  }
+  @media screen and (min-width: 80rem) {
+    :root #contact {
+      background-image: url("/images/okc-map-light.webp");
+    }
+    .dark #contact {
+      background-image: url("/images/okc-map-dark.webp");
+    }
+    #contact {
+      background-size: cover;
+      background-position: center;
+    }
+
+    #contact * {
+      z-index: 2;
+    }
+
+    #contact::before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.9;
+      background-color: var(--background);
+      border-bottom-right-radius: var(--radius-md);
+    }
+  }
+</style>

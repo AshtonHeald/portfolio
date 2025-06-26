@@ -1,0 +1,25 @@
+---
+const { id, title, description, className } = Astro.props;
+---
+
+<section
+  id={id}
+  class={`${className} relative flex xl:min-h-full p-4 md:p-8 !pb-12 md:!pb-24 xl:!pb-8 mx-auto w-full max-w-[872px] flex-col xl:mx-0 xl:max-w-full`}
+>
+  {
+    title && (
+      <h2 class="text-center font-serif text-3xl font-bold lg:text-4xl xl:text-left">
+        {title}
+      </h2>
+    )
+  }
+
+  {
+    description && (
+      <h3 class="mb-4 text-center font-serif text-lg font-semibold lg:text-xl xl:text-left">
+        {description}
+      </h3>
+    )
+  }
+  <slot />
+</section>
